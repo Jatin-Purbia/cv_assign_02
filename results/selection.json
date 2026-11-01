@@ -1,12 +1,12 @@
 {
-  "name": "tiny4_bce_128_infer64",
-  "weights": "experiments\\pilot4\\tiny4_bce_128\\inference_64.pth",
-  "validation_path": "experiments\\pilot4\\tiny4_bce_128\\inference_64_validation.json",
-  "parameters": "3793",
-  "miou": 0.6055523748991201,
-  "bf1": 0.13827567718957942,
-  "q": 0.4653693655862578,
-  "cpu_ms": 3.495260663507109,
-  "size_bytes": 25601,
-  "ces": 0.45857896662142267
+  "name": "unet16_bce_128_infer96",
+  "weights": "experiments\\final\\unet16_bce_128\\inference_96.pth",
+  "validation_path": "experiments\\final\\unet16_bce_128\\inference_96_validation.json",
+  "parameters": "439393",
+  "miou": 0.8502628753762983,
+  "bf1": 0.5958101975729193,
+  "q": 0.7739270720352847,
+  "cpu_ms": 11.907582938388625,
+  "size_bytes": 1783881,
+  "ces": 0.7041487476492712
 }

@@ -43,27 +43,32 @@
     {
       "file": "predict.py",
       "line": 6,
-      "module": "pathlib"
+      "module": "uuid"
     },
     {
       "file": "predict.py",
       "line": 7,
-      "module": "cv2"
+      "module": "pathlib"
     },
     {
       "file": "predict.py",
       "line": 8,
-      "module": "src.inference"
+      "module": "cv2"
     },
     {
       "file": "predict.py",
       "line": 9,
-      "module": "src.preprocessing"
+      "module": "src.optimized_inference"
     },
     {
       "file": "predict.py",
       "line": 10,
-      "module": "src.utils"
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "predict.py",
+      "line": 11,
+      "module": "src.deployment"
     },
     {
       "file": "scripts\\annotate.py",
@@ -142,7 +147,17 @@
     },
     {
       "file": "scripts\\audit.py",
-      "line": 63,
+      "line": 51,
+      "module": "src.inference"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 57,
+      "module": "src.deployment"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 77,
       "module": "src.captured"
     },
     {
@@ -298,7 +313,7 @@
     {
       "file": "scripts\\freeze_model.py",
       "line": 8,
-      "module": "src.inference"
+      "module": "src.optimized_inference"
     },
     {
       "file": "scripts\\freeze_model.py",
@@ -336,6 +351,66 @@
       "module": "src.utils"
     },
     {
+      "file": "scripts\\predict_folder.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 6,
+      "module": "cv2"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 7,
+      "module": "matplotlib"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 9,
+      "module": "matplotlib.pyplot"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 10,
+      "module": "numpy"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 11,
+      "module": "src.dataset"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 12,
+      "module": "src.deployment"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 13,
+      "module": "src.optimized_inference"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 14,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "scripts\\predict_folder.py",
+      "line": 15,
+      "module": "src.utils"
+    },
+    {
       "file": "scripts\\prepare_dataset.py",
       "line": 2,
       "module": "src"
@@ -363,6 +438,66 @@
     {
       "file": "scripts\\prepare_dataset.py",
       "line": 8,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 6,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 8,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 9,
+      "module": "datetime"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 10,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 11,
+      "module": "shutil"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 12,
+      "module": "time"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 13,
+      "module": "src.deployment"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 14,
+      "module": "src.evaluation"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 15,
+      "module": "src.optimized_inference"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 16,
+      "module": "src.robustness"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 17,
+      "module": "src.statistics"
+    },
+    {
+      "file": "scripts\\qualify_model.py",
+      "line": 18,
       "module": "src.utils"
     },
     {
@@ -608,12 +743,32 @@
     {
       "file": "src\\dataset.py",
       "line": 5,
-      "module": "torch.utils.data"
+      "module": "torch.nn"
     },
     {
       "file": "src\\dataset.py",
       "line": 6,
+      "module": "torch.utils.data"
+    },
+    {
+      "file": "src\\dataset.py",
+      "line": 7,
       "module": "src.preprocessing"
+    },
+    {
+      "file": "src\\deployment.py",
+      "line": 2,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\deployment.py",
+      "line": 3,
+      "module": "src.inference"
+    },
+    {
+      "file": "src\\deployment.py",
+      "line": 4,
+      "module": "src.utils"
     },
     {
       "file": "src\\evaluation.py",
@@ -643,21 +798,26 @@
     {
       "file": "src\\evaluation.py",
       "line": 7,
-      "module": "src.metrics"
+      "module": "src.optimized_inference"
     },
     {
       "file": "src\\evaluation.py",
       "line": 8,
-      "module": "src.preprocessing"
+      "module": "src.metrics"
     },
     {
       "file": "src\\evaluation.py",
       "line": 9,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 10,
       "module": "src.utils"
     },
     {
       "file": "src\\evaluation.py",
-      "line": 29,
+      "line": 30,
       "module": "src.captured"
     },
     {
@@ -756,6 +916,21 @@
       "module": "torch.nn"
     },
     {
+      "file": "src\\optimized_inference.py",
+      "line": 2,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\optimized_inference.py",
+      "line": 3,
+      "module": "src.inference"
+    },
+    {
+      "file": "src\\optimized_inference.py",
+      "line": 4,
+      "module": "torch"
+    },
+    {
       "file": "src\\preprocessing.py",
       "line": 2,
       "module": "pathlib"
@@ -776,6 +951,46 @@
       "module": "torch"
     },
     {
+      "file": "src\\robustness.py",
+      "line": 2,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\robustness.py",
+      "line": 3,
+      "module": "numpy"
+    },
+    {
+      "file": "src\\robustness.py",
+      "line": 4,
+      "module": "torch"
+    },
+    {
+      "file": "src\\robustness.py",
+      "line": 5,
+      "module": "src.dataset"
+    },
+    {
+      "file": "src\\robustness.py",
+      "line": 6,
+      "module": "src.optimized_inference"
+    },
+    {
+      "file": "src\\robustness.py",
+      "line": 7,
+      "module": "src.metrics"
+    },
+    {
+      "file": "src\\robustness.py",
+      "line": 8,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "src\\robustness.py",
+      "line": 9,
+      "module": "src.utils"
+    },
+    {
       "file": "src\\runtime.py",
       "line": 2,
       "module": "os"
@@ -791,6 +1006,11 @@
       "module": "torch"
     },
     {
+      "file": "src\\statistics.py",
+      "line": 2,
+      "module": "numpy"
+    },
+    {
       "file": "src\\trainer.py",
       "line": 2,
       "module": "csv"
@@ -798,56 +1018,71 @@
     {
       "file": "src\\trainer.py",
       "line": 3,
-      "module": "time"
+      "module": "copy"
     },
     {
       "file": "src\\trainer.py",
       "line": 4,
-      "module": "pathlib"
+      "module": "random"
     },
     {
       "file": "src\\trainer.py",
       "line": 5,
-      "module": "torch"
+      "module": "time"
     },
     {
       "file": "src\\trainer.py",
       "line": 6,
-      "module": "torch.nn"
+      "module": "pathlib"
     },
     {
       "file": "src\\trainer.py",
       "line": 7,
-      "module": "torch.utils.data"
+      "module": "numpy"
     },
     {
       "file": "src\\trainer.py",
       "line": 8,
-      "module": "src.dataset"
+      "module": "torch"
     },
     {
       "file": "src\\trainer.py",
       "line": 9,
-      "module": "src.inference"
+      "module": "torch.nn"
     },
     {
       "file": "src\\trainer.py",
       "line": 10,
-      "module": "src.losses"
+      "module": "torch.utils.data"
     },
     {
       "file": "src\\trainer.py",
       "line": 11,
-      "module": "src.metrics"
+      "module": "src.dataset"
     },
     {
       "file": "src\\trainer.py",
       "line": 12,
-      "module": "src.models"
+      "module": "src.inference"
     },
     {
       "file": "src\\trainer.py",
       "line": 13,
+      "module": "src.losses"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 14,
+      "module": "src.metrics"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 15,
+      "module": "src.models"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 16,
       "module": "src.utils"
     },
     {
@@ -943,7 +1178,7 @@
     {
       "file": "src\\visualization.py",
       "line": 10,
-      "module": "src.inference"
+      "module": "src.optimized_inference"
     },
     {
       "file": "src\\visualization.py",
@@ -1011,6 +1246,96 @@
       "module": "scripts.annotate"
     },
     {
+      "file": "tests\\test_deployment.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 4,
+      "module": "copy"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 6,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 7,
+      "module": "unittest.mock"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 8,
+      "module": "tests.helpers"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 9,
+      "module": "src.deployment"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 10,
+      "module": "src.inference"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 11,
+      "module": "src.models"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 12,
+      "module": "src.utils"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 80,
+      "module": "predict"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 86,
+      "module": "cv2"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 87,
+      "module": "numpy"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 88,
+      "module": "scripts.predict_folder"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 106,
+      "module": "scripts.qualify_model"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 107,
+      "module": "src.utils"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 141,
+      "module": "contextlib"
+    },
+    {
+      "file": "tests\\test_deployment.py",
+      "line": 142,
+      "module": "io"
+    },
+    {
       "file": "tests\\test_metrics.py",
       "line": 1,
       "module": "src"
@@ -1029,6 +1354,61 @@
       "file": "tests\\test_metrics.py",
       "line": 5,
       "module": "src.metrics"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 3,
+      "module": "pathlib"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 4,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 5,
+      "module": "cv2"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 6,
+      "module": "numpy"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 7,
+      "module": "torch"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 8,
+      "module": "tests.helpers"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 9,
+      "module": "src.evaluation"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 10,
+      "module": "src.inference"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 11,
+      "module": "src.models"
+    },
+    {
+      "file": "tests\\test_optimized_inference.py",
+      "line": 12,
+      "module": "src.optimized_inference"
     },
     {
       "file": "tests\\test_pipeline.py",
@@ -1149,6 +1529,146 @@
       "file": "tests\\test_pipeline.py",
       "line": 193,
       "module": "predict"
+    },
+    {
+      "file": "tests\\test_qualification_cli.py",
+      "line": 2,
+      "module": "contextlib"
+    },
+    {
+      "file": "tests\\test_qualification_cli.py",
+      "line": 3,
+      "module": "io"
+    },
+    {
+      "file": "tests\\test_qualification_cli.py",
+      "line": 4,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_qualification_cli.py",
+      "line": 5,
+      "module": "unittest.mock"
+    },
+    {
+      "file": "tests\\test_qualification_cli.py",
+      "line": 6,
+      "module": "scripts"
+    },
+    {
+      "file": "tests\\test_robustness.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_robustness.py",
+      "line": 3,
+      "module": "copy"
+    },
+    {
+      "file": "tests\\test_robustness.py",
+      "line": 4,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_robustness.py",
+      "line": 5,
+      "module": "numpy"
+    },
+    {
+      "file": "tests\\test_robustness.py",
+      "line": 6,
+      "module": "src.robustness"
+    },
+    {
+      "file": "tests\\test_statistics.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_statistics.py",
+      "line": 3,
+      "module": "copy"
+    },
+    {
+      "file": "tests\\test_statistics.py",
+      "line": 4,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_statistics.py",
+      "line": 5,
+      "module": "src.statistics"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 4,
+      "module": "contextlib"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 5,
+      "module": "io"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 6,
+      "module": "pathlib"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 7,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 8,
+      "module": "cv2"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 9,
+      "module": "numpy"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 10,
+      "module": "torch"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 11,
+      "module": "tests.helpers"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 12,
+      "module": "src.dataset"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 13,
+      "module": "src.trainer"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 14,
+      "module": "src.inference"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 15,
+      "module": "src.models"
+    },
+    {
+      "file": "tests\\test_training_reliability.py",
+      "line": 84,
+      "module": "src.utils"
     },
     {
       "file": "train.py",

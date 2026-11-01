@@ -1,6 +1,12 @@
 test_manual_polygon_rasterization (tests.test_compliance.ComplianceTests.test_manual_polygon_rasterization) ... ok
 test_runtime_precedes_numeric_imports (tests.test_compliance.ComplianceTests.test_runtime_precedes_numeric_imports) ... ok
 test_source_audit (tests.test_compliance.ComplianceTests.test_source_audit) ... ok
+test_active_pointer_requires_valid_gate_and_checkpoint_hash (tests.test_deployment.DeploymentTests.test_active_pointer_requires_valid_gate_and_checkpoint_hash) ... ok
+test_folder_prediction_preserves_masks_when_photo_is_named_comparison (tests.test_deployment.DeploymentTests.test_folder_prediction_preserves_masks_when_photo_is_named_comparison) ... ok
+test_mismatched_or_test_evidence_rejected (tests.test_deployment.DeploymentTests.test_mismatched_or_test_evidence_rejected) ... ok
+test_prediction_rejects_overwriting_input (tests.test_deployment.DeploymentTests.test_prediction_rejects_overwriting_input) ... ok
+test_qualification_activates_only_after_passing_evidence_is_saved (tests.test_deployment.DeploymentTests.test_qualification_activates_only_after_passing_evidence_is_saved) ... ok
+test_quality_latency_and_regression_gates (tests.test_deployment.DeploymentTests.test_quality_latency_and_regression_gates) ... ok
 test_border_touching (tests.test_metrics.MetricsTests.test_border_touching) ... ok
 test_both_boundaries_empty (tests.test_metrics.MetricsTests.test_both_boundaries_empty) ... ok
 test_full_mask_has_border_boundary (tests.test_metrics.MetricsTests.test_full_mask_has_border_boundary) ... ok
@@ -19,6 +25,9 @@ test_assignment_example (tests.test_metrics.ScoringTests.test_assignment_example
 test_invalid_scores (tests.test_metrics.ScoringTests.test_invalid_scores) ... ok
 test_limit_and_cap (tests.test_metrics.ScoringTests.test_limit_and_cap) ... ok
 test_q (tests.test_metrics.ScoringTests.test_q) ... ok
+test_channels_last_preserves_network_outputs_and_state (tests.test_optimized_inference.OptimizedInferenceTests.test_channels_last_preserves_network_outputs_and_state) ... ok
+test_evaluation_uses_recorded_layout_and_per_image_confusion (tests.test_optimized_inference.OptimizedInferenceTests.test_evaluation_uses_recorded_layout_and_per_image_confusion) ... ok
+test_unknown_layout_is_rejected (tests.test_optimized_inference.OptimizedInferenceTests.test_unknown_layout_is_rejected) ... ok
 test_missing_duplicate_and_corrupt (tests.test_pipeline.DatasetTests.test_missing_duplicate_and_corrupt) ... ok
 test_split (tests.test_pipeline.DatasetTests.test_split) ... ok
 test_cli_exact_stdout_fresh_process (tests.test_pipeline.InferenceTests.test_cli_exact_stdout_fresh_process) ... ok
@@ -35,8 +44,18 @@ test_interpolation_contract (tests.test_pipeline.PreprocessingTests.test_interpo
 test_mismatched_original_dimensions (tests.test_pipeline.PreprocessingTests.test_mismatched_original_dimensions) ... ok
 test_threshold (tests.test_pipeline.PreprocessingTests.test_threshold) ... ok
 test_real_optimizer_checkpoint_loop_on_synthetic_data (tests.test_pipeline.TrainingSmokeTests.test_real_optimizer_checkpoint_loop_on_synthetic_data) ... ok
+test_resolution_only_qualification (tests.test_qualification_cli.QualificationCliTests.test_resolution_only_qualification) ... ok
+test_timeout_does_not_qualify_or_activate (tests.test_qualification_cli.QualificationCliTests.test_timeout_does_not_qualify_or_activate) ... ok
+test_waits_for_completed_summary_before_qualification (tests.test_qualification_cli.QualificationCliTests.test_waits_for_completed_summary_before_qualification) ... ok
+test_photometric_transforms_are_bounded_and_keep_input (tests.test_robustness.RobustnessTests.test_photometric_transforms_are_bounded_and_keep_input) ... ok
+test_stress_gate_rejects_hidden_condition_regression (tests.test_robustness.RobustnessTests.test_stress_gate_rejects_hidden_condition_regression) ... ok
+test_changed_ground_truth_rejected (tests.test_statistics.StatisticsTests.test_changed_ground_truth_rejected) ... ok
+test_positive_negative_and_identical_paired_intervals (tests.test_statistics.StatisticsTests.test_positive_negative_and_identical_paired_intervals) ... ok
+test_geometry_keeps_image_and_mask_aligned (tests.test_training_reliability.TrainingReliabilityTests.test_geometry_keeps_image_and_mask_aligned) ... ok
+test_initialization_has_exact_provenance (tests.test_training_reliability.TrainingReliabilityTests.test_initialization_has_exact_provenance) ... ok
+test_resume_matches_uninterrupted_training_and_repairs_history (tests.test_training_reliability.TrainingReliabilityTests.test_resume_matches_uninterrupted_training_and_repairs_history) ... ok
 
 ----------------------------------------------------------------------
-Ran 37 tests in 25.082s
+Ran 56 tests in 10.815s
 
 OK

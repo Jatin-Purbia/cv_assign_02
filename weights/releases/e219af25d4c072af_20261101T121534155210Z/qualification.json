@@ -1,0 +1,1818 @@
+{
+  "baseline_sha256": "a8d741471d13b8922e8da1d38c5a6d36bb1e502493af4882bd301fc8c5b79696",
+  "baseline": {
+    "miou": 0.8502628753762983,
+    "bf1": 0.5958101975729193,
+    "q": 0.7739270720352847,
+    "cpu_ms": 22.437796208530806,
+    "size_bytes": 1783881,
+    "ces": 0.6715502791529981,
+    "images": 1055,
+    "manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc"
+  },
+  "baseline_stress": {
+    "split": "validation-stress",
+    "manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+    "checkpoint_sha256": "a8d741471d13b8922e8da1d38c5a6d36bb1e502493af4882bd301fc8c5b79696",
+    "ids": [
+      "ILSVRC2012_test_00000030",
+      "ILSVRC2012_test_00001227",
+      "ILSVRC2012_test_00004757",
+      "ILSVRC2012_test_00007770",
+      "ILSVRC2012_test_00010214",
+      "ILSVRC2012_test_00013254",
+      "ILSVRC2012_test_00027203",
+      "ILSVRC2012_test_00035259",
+      "ILSVRC2012_test_00038181",
+      "ILSVRC2012_test_00040240",
+      "ILSVRC2012_test_00044257",
+      "ILSVRC2012_test_00048728",
+      "ILSVRC2012_test_00053685",
+      "ILSVRC2012_test_00058680",
+      "ILSVRC2012_test_00066688",
+      "ILSVRC2012_test_00070020",
+      "ILSVRC2012_test_00078940",
+      "ILSVRC2012_test_00086785",
+      "ILSVRC2012_test_00097002",
+      "ILSVRC2012_val_00019681",
+      "ILSVRC2012_val_00030938",
+      "ILSVRC2012_val_00038323",
+      "ILSVRC2012_val_00047211",
+      "ILSVRC2013_test_00002609",
+      "ILSVRC2013_test_00004177",
+      "ILSVRC2013_test_00006136",
+      "ILSVRC2013_test_00007977",
+      "ILSVRC2014_train_00003677",
+      "ILSVRC2014_train_00010027",
+      "ILSVRC2014_train_00015840",
+      "ILSVRC2014_train_00019007",
+      "ILSVRC2014_train_00022876",
+      "ILSVRC2014_train_00028786",
+      "ILSVRC2014_train_00045284",
+      "ILSVRC2014_train_00054115",
+      "n01498041_16921",
+      "n01641577_16848",
+      "n01667114_7469",
+      "n01728572_18291",
+      "n01753488_10582",
+      "n02027492_3450",
+      "n02110958_16334",
+      "n02165456_10306",
+      "n02277742_25188",
+      "n02356798_3461",
+      "n02486261_7715",
+      "n02504458_1022",
+      "n02802426_8263",
+      "n03063599_4051",
+      "n03124170_5373",
+      "n03131574_16348",
+      "n03188531_25166",
+      "n03188531_7917",
+      "n03255030_3037",
+      "n03337140_21841",
+      "n03379051_3259",
+      "n03379051_6522",
+      "n03445777_2262",
+      "n03445777_6335",
+      "n03445924_13316",
+      "n03513137_2215",
+      "n03513137_8336",
+      "n03584254_2803",
+      "n03584254_6265",
+      "n03642806_11897",
+      "n03673027_15044",
+      "n03690938_1343",
+      "n03710721_24598",
+      "n03710721_5015",
+      "n03761084_41848",
+      "n03764736_4365",
+      "n03770439_10704",
+      "n03770439_18314",
+      "n03770439_4758",
+      "n03770679_15258",
+      "n03775546_10788",
+      "n03775546_9524",
+      "n03790512_7743",
+      "n03797390_1641",
+      "n03814639_6537",
+      "n03908714_3098",
+      "n03950228_21038",
+      "n04023962_15676",
+      "n04023962_7261",
+      "n04026417_7263",
+      "n04070727_3900",
+      "n04074963_5772",
+      "n04116512_5260",
+      "n04131690_1371",
+      "n04146614_451",
+      "n04146614_9930",
+      "n04254120_2436",
+      "n04259630_11607",
+      "n04270147_4470",
+      "n04285008_8598",
+      "n04344873_6310",
+      "n04371430_20390",
+      "n04409515_6283",
+      "n04487081_6603",
+      "n04509417_2217",
+      "n04542943_2056",
+      "n06874185_34836",
+      "n07693725_11023",
+      "n07697313_8515",
+      "n07714571_2599",
+      "n07718472_4413",
+      "n07718747_9141",
+      "n07720875_357",
+      "n07720875_7946",
+      "n07734744_4163",
+      "n07739125_6509",
+      "n07742313_12446",
+      "n07742313_5465",
+      "n07747607_15895",
+      "n07747607_55219",
+      "n07749582_10061",
+      "n07749582_3484",
+      "n07753113_11814",
+      "n07753113_7071",
+      "n07768694_11778",
+      "n07768694_39144",
+      "n07873807_6749",
+      "n07930864_8601",
+      "sun_adwqivhqqsuqexvw",
+      "sun_ajjwgwpswjbvjrbb",
+      "sun_arknzqdzriubilkv",
+      "sun_bavgffdllieopxov",
+      "sun_byokesjvhivrbksy"
+    ],
+    "conditions": {
+      "dark": {
+        "confusion_matrix": [
+          [
+            5956257,
+            177181
+          ],
+          [
+            428274,
+            1826896
+          ]
+        ],
+        "iou_fg": 0.7510823890137567,
+        "iou_bg": 0.9077291109393402,
+        "miou": 0.8294057499765484,
+        "bf1": 0.562324426496529,
+        "q": 0.7492813529325426,
+        "images": 128
+      },
+      "bright": {
+        "confusion_matrix": [
+          [
+            5897366,
+            236072
+          ],
+          [
+            323148,
+            1932022
+          ]
+        ],
+        "iou_fg": 0.775525621356737,
+        "iou_bg": 0.913387663387431,
+        "miou": 0.8444566423720841,
+        "bf1": 0.5776062796536929,
+        "q": 0.7644015335565667,
+        "images": 128
+      },
+      "low_contrast": {
+        "confusion_matrix": [
+          [
+            5944965,
+            188473
+          ],
+          [
+            409664,
+            1845506
+          ]
+        ],
+        "iou_fg": 0.7552273388543252,
+        "iou_bg": 0.9085851022955167,
+        "miou": 0.831906220574921,
+        "bf1": 0.5564842955794588,
+        "q": 0.7492796430762823,
+        "images": 128
+      }
+    },
+    "mean_q": 0.7543208431884638
+  },
+  "qualification_source_sha256": {
+    "src/deployment.py": "28d68fbd38a5e37bb61e6707f9db85fd5d328a7adf5063bf766c76c91816df72",
+    "src/robustness.py": "f7b200e333e772f719ea44b6ce999e53bd30da29bde70e5ca2dd5f9f411fb900",
+    "src/statistics.py": "1f3af7cfd820cdf7575d43d56ba88f29aff3f97b68460d23647c971b1f7f75a7",
+    "src/evaluation.py": "c3c4df9e75a6d0a1e121cf2c1aee0c67e3ae518059105b22be97da86706a7549",
+    "src/optimized_inference.py": "94c37507745d2a323861d9ceb4246b0532ef587b1860c3973785cff03bd77f41",
+    "scripts/qualify_model.py": "5990056f17a2d5ac1333535102ca2a86077f23c06ab3b74824f5e2ddf1b0246e"
+  },
+  "scope": "DUTS-TR validation only; quality priority within CPU budget",
+  "evaluated_utc": "2026-11-01T12:15:34.151628+00:00",
+  "observations": [
+    {
+      "name": "baseline_r112_t0.5_contiguous",
+      "weights": "results/quality/baseline_r112_t0.5_contiguous.pth",
+      "validation_path": "results/quality/baseline_r112_t0.5_contiguous.validation.json",
+      "run": null,
+      "memory_format": "contiguous",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.012384609454386908,
+        "bf1_gain": 0.023165431937800518,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.07298578199052133,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.009449629316584676,
+          0.015521098078127547
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8580271323377937,
+        "bf1": 0.6189756295107198,
+        "q": 0.7863116814896716,
+        "cpu_ms": 26.140402843601894,
+        "size_bytes": 1785563,
+        "ces": 0.6706194808766595
+      }
+    },
+    {
+      "name": "baseline_r112_t0.5_channels_last",
+      "weights": "results/quality/baseline_r112_t0.5_channels_last.pth",
+      "validation_path": "results/quality/baseline_r112_t0.5_channels_last.validation.json",
+      "run": null,
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.012384769413310237,
+        "bf1_gain": 0.023165965134211652,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.07298578199052133,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.009449776921116346,
+          0.015521125358758417
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8580271323377937,
+        "bf1": 0.618976162707131,
+        "q": 0.7863118414485949,
+        "cpu_ms": 19.32760663507109,
+        "size_bytes": 1785785,
+        "ces": 0.6920433847649481
+      }
+    },
+    {
+      "name": "baseline_r128_t0.5_contiguous",
+      "weights": "results/quality/baseline_r128_t0.5_contiguous.pth",
+      "validation_path": "results/quality/baseline_r128_t0.5_contiguous.validation.json",
+      "run": null,
+      "memory_format": "contiguous",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.01376690128400393,
+        "bf1_gain": 0.028679596587097622,
+        "p95_cpu_ms": 46.875,
+        "large_regression_fraction": 0.12796208530805686,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.009448958003965852,
+          0.018232693514511074
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.857638621530405,
+        "bf1": 0.6244897941600169,
+        "q": 0.7876939733192886,
+        "cpu_ms": 33.175355450236964,
+        "size_bytes": 1785563,
+        "ces": 0.6496328332237679
+      }
+    },
+    {
+      "name": "baseline_r128_t0.5_channels_last",
+      "weights": "results/quality/baseline_r128_t0.5_channels_last.pth",
+      "validation_path": "results/quality/baseline_r128_t0.5_channels_last.validation.json",
+      "run": null,
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.01376690128400393,
+        "bf1_gain": 0.028679596587097622,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.12796208530805686,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.009448958003965852,
+          0.018232693514511074
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.857638621530405,
+        "bf1": 0.6244897941600169,
+        "q": 0.7876939733192886,
+        "cpu_ms": 21.563981042654028,
+        "size_bytes": 1785785,
+        "ces": 0.6862135026155064
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r96_t0.45_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r96_t0.45_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r96_t0.45_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": false,
+        "checks": {
+          "quality_gain": false,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.004733052036996699,
+        "bf1_gain": 0.006270910912712813,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.04454976303317536,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.0022985580201679763,
+          0.007241450773251254
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8543368450379882,
+        "bf1": 0.6020811084856321,
+        "q": 0.7786601240722814,
+        "cpu_ms": 16.365521327014218,
+        "size_bytes": 1787043,
+        "ces": 0.6945114842053208
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r96_t0.5_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r96_t0.5_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r96_t0.5_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": false,
+        "checks": {
+          "quality_gain": false,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.004237332868745836,
+        "bf1_gain": 0.005818372158306939,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.024644549763033177,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.0022414257651973387,
+          0.006360866170272023
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8538226199780895,
+        "bf1": 0.6016285697312262,
+        "q": 0.7781644049040305,
+        "cpu_ms": 14.380924170616113,
+        "size_bytes": 1786969,
+        "ces": 0.7002480810434892
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r112_t0.45_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r112_t0.45_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r112_t0.45_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.01392171074598958,
+        "bf1_gain": 0.024908649741744004,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.0976303317535545,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.010287451890821527,
+          0.017950955573725315
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8594758979812505,
+        "bf1": 0.6207188473146633,
+        "q": 0.7878487827812742,
+        "cpu_ms": 17.816943127962084,
+        "size_bytes": 1787181,
+        "ces": 0.6981305424951005
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r112_t0.5_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r112_t0.5_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r112_t0.5_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.013886707991576985,
+        "bf1_gain": 0.02470253441698711,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.08625592417061612,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.010397292233630196,
+          0.01759490828727346
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8595142291855569,
+        "bf1": 0.6205127319899064,
+        "q": 0.7878137800268616,
+        "cpu_ms": 20.527251184834125,
+        "size_bytes": 1787043,
+        "ces": 0.6895612456714463
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r128_t0.45_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r128_t0.45_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r128_t0.45_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.015110144883422882,
+        "bf1_gain": 0.03178605609609608,
+        "p95_cpu_ms": 46.875,
+        "large_regression_fraction": 0.13175355450236967,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.010121342092287832,
+          0.020266439906054073
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8582262011685757,
+        "bf1": 0.6275962536690154,
+        "q": 0.7890372169187075,
+        "cpu_ms": 26.436611374407583,
+        "size_bytes": 1787181,
+        "ces": 0.6719786845625892
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r128_t0.5_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r128_t0.5_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r128_t0.5_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.01593603955296441,
+        "bf1_gain": 0.032568330655789235,
+        "p95_cpu_ms": 31.25,
+        "large_regression_fraction": 0.12890995260663507,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.011013611790694452,
+          0.020859244819190128
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8590707901709094,
+        "bf1": 0.6283785282287085,
+        "q": 0.7898631115882491,
+        "cpu_ms": 24.31872037914692,
+        "size_bytes": 1787043,
+        "ces": 0.6793760273446485
+      },
+      "stress_metrics": {
+        "split": "validation-stress",
+        "manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "checkpoint_sha256": "e219af25d4c072afa09c4ee9eebca74a1a808d0e6b77ff841697ab31e70bf05b",
+        "ids": [
+          "ILSVRC2012_test_00000030",
+          "ILSVRC2012_test_00001227",
+          "ILSVRC2012_test_00004757",
+          "ILSVRC2012_test_00007770",
+          "ILSVRC2012_test_00010214",
+          "ILSVRC2012_test_00013254",
+          "ILSVRC2012_test_00027203",
+          "ILSVRC2012_test_00035259",
+          "ILSVRC2012_test_00038181",
+          "ILSVRC2012_test_00040240",
+          "ILSVRC2012_test_00044257",
+          "ILSVRC2012_test_00048728",
+          "ILSVRC2012_test_00053685",
+          "ILSVRC2012_test_00058680",
+          "ILSVRC2012_test_00066688",
+          "ILSVRC2012_test_00070020",
+          "ILSVRC2012_test_00078940",
+          "ILSVRC2012_test_00086785",
+          "ILSVRC2012_test_00097002",
+          "ILSVRC2012_val_00019681",
+          "ILSVRC2012_val_00030938",
+          "ILSVRC2012_val_00038323",
+          "ILSVRC2012_val_00047211",
+          "ILSVRC2013_test_00002609",
+          "ILSVRC2013_test_00004177",
+          "ILSVRC2013_test_00006136",
+          "ILSVRC2013_test_00007977",
+          "ILSVRC2014_train_00003677",
+          "ILSVRC2014_train_00010027",
+          "ILSVRC2014_train_00015840",
+          "ILSVRC2014_train_00019007",
+          "ILSVRC2014_train_00022876",
+          "ILSVRC2014_train_00028786",
+          "ILSVRC2014_train_00045284",
+          "ILSVRC2014_train_00054115",
+          "n01498041_16921",
+          "n01641577_16848",
+          "n01667114_7469",
+          "n01728572_18291",
+          "n01753488_10582",
+          "n02027492_3450",
+          "n02110958_16334",
+          "n02165456_10306",
+          "n02277742_25188",
+          "n02356798_3461",
+          "n02486261_7715",
+          "n02504458_1022",
+          "n02802426_8263",
+          "n03063599_4051",
+          "n03124170_5373",
+          "n03131574_16348",
+          "n03188531_25166",
+          "n03188531_7917",
+          "n03255030_3037",
+          "n03337140_21841",
+          "n03379051_3259",
+          "n03379051_6522",
+          "n03445777_2262",
+          "n03445777_6335",
+          "n03445924_13316",
+          "n03513137_2215",
+          "n03513137_8336",
+          "n03584254_2803",
+          "n03584254_6265",
+          "n03642806_11897",
+          "n03673027_15044",
+          "n03690938_1343",
+          "n03710721_24598",
+          "n03710721_5015",
+          "n03761084_41848",
+          "n03764736_4365",
+          "n03770439_10704",
+          "n03770439_18314",
+          "n03770439_4758",
+          "n03770679_15258",
+          "n03775546_10788",
+          "n03775546_9524",
+          "n03790512_7743",
+          "n03797390_1641",
+          "n03814639_6537",
+          "n03908714_3098",
+          "n03950228_21038",
+          "n04023962_15676",
+          "n04023962_7261",
+          "n04026417_7263",
+          "n04070727_3900",
+          "n04074963_5772",
+          "n04116512_5260",
+          "n04131690_1371",
+          "n04146614_451",
+          "n04146614_9930",
+          "n04254120_2436",
+          "n04259630_11607",
+          "n04270147_4470",
+          "n04285008_8598",
+          "n04344873_6310",
+          "n04371430_20390",
+          "n04409515_6283",
+          "n04487081_6603",
+          "n04509417_2217",
+          "n04542943_2056",
+          "n06874185_34836",
+          "n07693725_11023",
+          "n07697313_8515",
+          "n07714571_2599",
+          "n07718472_4413",
+          "n07718747_9141",
+          "n07720875_357",
+          "n07720875_7946",
+          "n07734744_4163",
+          "n07739125_6509",
+          "n07742313_12446",
+          "n07742313_5465",
+          "n07747607_15895",
+          "n07747607_55219",
+          "n07749582_10061",
+          "n07749582_3484",
+          "n07753113_11814",
+          "n07753113_7071",
+          "n07768694_11778",
+          "n07768694_39144",
+          "n07873807_6749",
+          "n07930864_8601",
+          "sun_adwqivhqqsuqexvw",
+          "sun_ajjwgwpswjbvjrbb",
+          "sun_arknzqdzriubilkv",
+          "sun_bavgffdllieopxov",
+          "sun_byokesjvhivrbksy"
+        ],
+        "conditions": {
+          "dark": {
+            "confusion_matrix": [
+              [
+                5885602,
+                247836
+              ],
+              [
+                297156,
+                1958014
+              ]
+            ],
+            "iou_fg": 0.7822650045585189,
+            "iou_bg": 0.9152501308588289,
+            "miou": 0.8487575677086738,
+            "bf1": 0.5958540264819119,
+            "q": 0.7728865053406452,
+            "images": 128
+          },
+          "bright": {
+            "confusion_matrix": [
+              [
+                5841380,
+                292058
+              ],
+              [
+                231764,
+                2023406
+              ]
+            ],
+            "iou_fg": 0.7943560607845077,
+            "iou_bg": 0.9177053611181546,
+            "miou": 0.8560307109513312,
+            "bf1": 0.6098228990400546,
+            "q": 0.7821683673779481,
+            "images": 128
+          },
+          "low_contrast": {
+            "confusion_matrix": [
+              [
+                5873964,
+                259474
+              ],
+              [
+                281812,
+                1973358
+              ]
+            ],
+            "iou_fg": 0.7847464690827012,
+            "iou_bg": 0.9156251120377226,
+            "miou": 0.8501857905602119,
+            "bf1": 0.5905803618445605,
+            "q": 0.7723041619455164,
+            "images": 128
+          }
+        },
+        "mean_q": 0.7757863448880365
+      },
+      "stress_gates": {
+        "passed": true,
+        "checks": {
+          "mean_nonregression": true,
+          "condition_nonregression": true
+        },
+        "q_gains": {
+          "dark": 0.02360515240810257,
+          "bright": 0.017766833821381445,
+          "low_contrast": 0.02302451886923418
+        },
+        "mean_q_gain": 0.02146550169957273,
+        "policy": {
+          "min_mean_q_gain": 0,
+          "max_condition_q_drop": 0.01
+        }
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r144_t0.45_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r144_t0.45_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r144_t0.45_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.006505602170726044,
+        "bf1_gain": 0.021972589722680347,
+        "p95_cpu_ms": 46.875,
+        "large_regression_fraction": 0.2,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.0005781777820038637,
+          0.012589707040453884
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.850139768596187,
+        "bf1": 0.6177827872955997,
+        "q": 0.7804326742060107,
+        "cpu_ms": 28.18424170616114,
+        "size_bytes": 1787181,
+        "ces": 0.6591950475202232
+      }
+    },
+    {
+      "name": "unet16_dice_aug_recovered_r144_t0.5_channels_last",
+      "weights": "results/quality/unet16_dice_aug_recovered_r144_t0.5_channels_last.pth",
+      "validation_path": "results/quality/unet16_dice_aug_recovered_r144_t0.5_channels_last.validation.json",
+      "run": {
+        "config": {
+          "seed": 42,
+          "data_root": "data/DUTS",
+          "train_manifest": "data/splits/train.txt",
+          "val_manifest": "data/splits/val.txt",
+          "model": {
+            "kind": "unet",
+            "base": 16,
+            "depth": 4
+          },
+          "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+          "resolution": 128,
+          "inference_resolution": 128,
+          "epochs": 6,
+          "batch_size": 16,
+          "training_threads": 10,
+          "lr": 0.0003,
+          "weight_decay": 0.0001,
+          "dice_weight": 0.3,
+          "gradient_clip": 5.0,
+          "patience": 3,
+          "threshold": 0.5,
+          "augmentation": {
+            "geometry_probability": 0.5,
+            "scale": 0.15,
+            "translation": 0.1,
+            "brightness": 0.2,
+            "contrast": 0.2,
+            "saturation": 0.15
+          }
+        },
+        "environment": {
+          "python": "3.12.4",
+          "torch": "2.7.1+cpu",
+          "numpy": "2.2.6",
+          "opencv": "4.12.0",
+          "matplotlib": "3.10.8",
+          "cpu_model": "Intel(R) Core(TM) 7 150U",
+          "platform": "Windows-11-10.0.26300-SP0",
+          "torch_threads": 10
+        },
+        "device": "cpu",
+        "train_count": 9498,
+        "val_count": 1055,
+        "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+        "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+        "parameters": 439393,
+        "initialization": {
+          "path": "experiments/final/unet16_bce_128/best.pth",
+          "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+          "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+        },
+        "source_sha256": {
+          "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+          "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+          "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+          "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+        }
+      },
+      "memory_format": "channels_last",
+      "gates": {
+        "passed": true,
+        "checks": {
+          "quality_gain": true,
+          "boundary_nonregression": true,
+          "region_nonregression": true,
+          "mean_cpu_margin": true,
+          "p95_cpu_budget": true,
+          "limited_large_regressions": true,
+          "positive_paired_interval": true
+        },
+        "q_gain": 0.007757346641485308,
+        "bf1_gain": 0.02331875141770212,
+        "p95_cpu_ms": 46.875,
+        "large_regression_fraction": 0.18862559241706162,
+        "policy": {
+          "min_q_gain": 0.005,
+          "max_miou_drop": 0.002,
+          "max_mean_cpu_ms": 40,
+          "max_p95_cpu_ms": 50,
+          "max_large_regression_fraction": 0.25,
+          "large_regression_q_drop": 0.05
+        }
+      },
+      "paired_quality_interval": {
+        "passed": true,
+        "q_gain_95_interval": [
+          0.0019284695575368716,
+          0.013650775324192697
+        ],
+        "draws": 2000,
+        "seed": 42,
+        "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+        "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+      },
+      "metrics": {
+        "miou": 0.8513510485422622,
+        "bf1": 0.6191289489906214,
+        "q": 0.78168441867677,
+        "cpu_ms": 27.651066350710902,
+        "size_bytes": 1787043,
+        "ces": 0.6619220089911113
+      }
+    }
+  ],
+  "selected": {
+    "name": "unet16_dice_aug_recovered_r128_t0.5_channels_last",
+    "weights": "results/quality/unet16_dice_aug_recovered_r128_t0.5_channels_last.pth",
+    "validation_path": "results/quality/unet16_dice_aug_recovered_r128_t0.5_channels_last.validation.json",
+    "run": {
+      "config": {
+        "seed": 42,
+        "data_root": "data/DUTS",
+        "train_manifest": "data/splits/train.txt",
+        "val_manifest": "data/splits/val.txt",
+        "model": {
+          "kind": "unet",
+          "base": 16,
+          "depth": 4
+        },
+        "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+        "resolution": 128,
+        "inference_resolution": 128,
+        "epochs": 6,
+        "batch_size": 16,
+        "training_threads": 10,
+        "lr": 0.0003,
+        "weight_decay": 0.0001,
+        "dice_weight": 0.3,
+        "gradient_clip": 5.0,
+        "patience": 3,
+        "threshold": 0.5,
+        "augmentation": {
+          "geometry_probability": 0.5,
+          "scale": 0.15,
+          "translation": 0.1,
+          "brightness": 0.2,
+          "contrast": 0.2,
+          "saturation": 0.15
+        }
+      },
+      "environment": {
+        "python": "3.12.4",
+        "torch": "2.7.1+cpu",
+        "numpy": "2.2.6",
+        "opencv": "4.12.0",
+        "matplotlib": "3.10.8",
+        "cpu_model": "Intel(R) Core(TM) 7 150U",
+        "platform": "Windows-11-10.0.26300-SP0",
+        "torch_threads": 10
+      },
+      "device": "cpu",
+      "train_count": 9498,
+      "val_count": 1055,
+      "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+      "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+      "parameters": 439393,
+      "initialization": {
+        "path": "experiments/final/unet16_bce_128/best.pth",
+        "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+        "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+      },
+      "source_sha256": {
+        "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+        "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+        "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+        "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+      }
+    },
+    "memory_format": "channels_last",
+    "gates": {
+      "passed": true,
+      "checks": {
+        "quality_gain": true,
+        "boundary_nonregression": true,
+        "region_nonregression": true,
+        "mean_cpu_margin": true,
+        "p95_cpu_budget": true,
+        "limited_large_regressions": true,
+        "positive_paired_interval": true
+      },
+      "q_gain": 0.01593603955296441,
+      "bf1_gain": 0.032568330655789235,
+      "p95_cpu_ms": 31.25,
+      "large_regression_fraction": 0.12890995260663507,
+      "policy": {
+        "min_q_gain": 0.005,
+        "max_miou_drop": 0.002,
+        "max_mean_cpu_ms": 40,
+        "max_p95_cpu_ms": 50,
+        "max_large_regression_fraction": 0.25,
+        "large_regression_q_drop": 0.05
+      }
+    },
+    "paired_quality_interval": {
+      "passed": true,
+      "q_gain_95_interval": [
+        0.011013611790694452,
+        0.020859244819190128
+      ],
+      "draws": 2000,
+      "seed": 42,
+      "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+      "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+    },
+    "metrics": {
+      "miou": 0.8590707901709094,
+      "bf1": 0.6283785282287085,
+      "q": 0.7898631115882491,
+      "cpu_ms": 24.31872037914692,
+      "size_bytes": 1787043,
+      "ces": 0.6793760273446485
+    },
+    "stress_metrics": {
+      "split": "validation-stress",
+      "manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+      "checkpoint_sha256": "e219af25d4c072afa09c4ee9eebca74a1a808d0e6b77ff841697ab31e70bf05b",
+      "ids": [
+        "ILSVRC2012_test_00000030",
+        "ILSVRC2012_test_00001227",
+        "ILSVRC2012_test_00004757",
+        "ILSVRC2012_test_00007770",
+        "ILSVRC2012_test_00010214",
+        "ILSVRC2012_test_00013254",
+        "ILSVRC2012_test_00027203",
+        "ILSVRC2012_test_00035259",
+        "ILSVRC2012_test_00038181",
+        "ILSVRC2012_test_00040240",
+        "ILSVRC2012_test_00044257",
+        "ILSVRC2012_test_00048728",
+        "ILSVRC2012_test_00053685",
+        "ILSVRC2012_test_00058680",
+        "ILSVRC2012_test_00066688",
+        "ILSVRC2012_test_00070020",
+        "ILSVRC2012_test_00078940",
+        "ILSVRC2012_test_00086785",
+        "ILSVRC2012_test_00097002",
+        "ILSVRC2012_val_00019681",
+        "ILSVRC2012_val_00030938",
+        "ILSVRC2012_val_00038323",
+        "ILSVRC2012_val_00047211",
+        "ILSVRC2013_test_00002609",
+        "ILSVRC2013_test_00004177",
+        "ILSVRC2013_test_00006136",
+        "ILSVRC2013_test_00007977",
+        "ILSVRC2014_train_00003677",
+        "ILSVRC2014_train_00010027",
+        "ILSVRC2014_train_00015840",
+        "ILSVRC2014_train_00019007",
+        "ILSVRC2014_train_00022876",
+        "ILSVRC2014_train_00028786",
+        "ILSVRC2014_train_00045284",
+        "ILSVRC2014_train_00054115",
+        "n01498041_16921",
+        "n01641577_16848",
+        "n01667114_7469",
+        "n01728572_18291",
+        "n01753488_10582",
+        "n02027492_3450",
+        "n02110958_16334",
+        "n02165456_10306",
+        "n02277742_25188",
+        "n02356798_3461",
+        "n02486261_7715",
+        "n02504458_1022",
+        "n02802426_8263",
+        "n03063599_4051",
+        "n03124170_5373",
+        "n03131574_16348",
+        "n03188531_25166",
+        "n03188531_7917",
+        "n03255030_3037",
+        "n03337140_21841",
+        "n03379051_3259",
+        "n03379051_6522",
+        "n03445777_2262",
+        "n03445777_6335",
+        "n03445924_13316",
+        "n03513137_2215",
+        "n03513137_8336",
+        "n03584254_2803",
+        "n03584254_6265",
+        "n03642806_11897",
+        "n03673027_15044",
+        "n03690938_1343",
+        "n03710721_24598",
+        "n03710721_5015",
+        "n03761084_41848",
+        "n03764736_4365",
+        "n03770439_10704",
+        "n03770439_18314",
+        "n03770439_4758",
+        "n03770679_15258",
+        "n03775546_10788",
+        "n03775546_9524",
+        "n03790512_7743",
+        "n03797390_1641",
+        "n03814639_6537",
+        "n03908714_3098",
+        "n03950228_21038",
+        "n04023962_15676",
+        "n04023962_7261",
+        "n04026417_7263",
+        "n04070727_3900",
+        "n04074963_5772",
+        "n04116512_5260",
+        "n04131690_1371",
+        "n04146614_451",
+        "n04146614_9930",
+        "n04254120_2436",
+        "n04259630_11607",
+        "n04270147_4470",
+        "n04285008_8598",
+        "n04344873_6310",
+        "n04371430_20390",
+        "n04409515_6283",
+        "n04487081_6603",
+        "n04509417_2217",
+        "n04542943_2056",
+        "n06874185_34836",
+        "n07693725_11023",
+        "n07697313_8515",
+        "n07714571_2599",
+        "n07718472_4413",
+        "n07718747_9141",
+        "n07720875_357",
+        "n07720875_7946",
+        "n07734744_4163",
+        "n07739125_6509",
+        "n07742313_12446",
+        "n07742313_5465",
+        "n07747607_15895",
+        "n07747607_55219",
+        "n07749582_10061",
+        "n07749582_3484",
+        "n07753113_11814",
+        "n07753113_7071",
+        "n07768694_11778",
+        "n07768694_39144",
+        "n07873807_6749",
+        "n07930864_8601",
+        "sun_adwqivhqqsuqexvw",
+        "sun_ajjwgwpswjbvjrbb",
+        "sun_arknzqdzriubilkv",
+        "sun_bavgffdllieopxov",
+        "sun_byokesjvhivrbksy"
+      ],
+      "conditions": {
+        "dark": {
+          "confusion_matrix": [
+            [
+              5885602,
+              247836
+            ],
+            [
+              297156,
+              1958014
+            ]
+          ],
+          "iou_fg": 0.7822650045585189,
+          "iou_bg": 0.9152501308588289,
+          "miou": 0.8487575677086738,
+          "bf1": 0.5958540264819119,
+          "q": 0.7728865053406452,
+          "images": 128
+        },
+        "bright": {
+          "confusion_matrix": [
+            [
+              5841380,
+              292058
+            ],
+            [
+              231764,
+              2023406
+            ]
+          ],
+          "iou_fg": 0.7943560607845077,
+          "iou_bg": 0.9177053611181546,
+          "miou": 0.8560307109513312,
+          "bf1": 0.6098228990400546,
+          "q": 0.7821683673779481,
+          "images": 128
+        },
+        "low_contrast": {
+          "confusion_matrix": [
+            [
+              5873964,
+              259474
+            ],
+            [
+              281812,
+              1973358
+            ]
+          ],
+          "iou_fg": 0.7847464690827012,
+          "iou_bg": 0.9156251120377226,
+          "miou": 0.8501857905602119,
+          "bf1": 0.5905803618445605,
+          "q": 0.7723041619455164,
+          "images": 128
+        }
+      },
+      "mean_q": 0.7757863448880365
+    },
+    "stress_gates": {
+      "passed": true,
+      "checks": {
+        "mean_nonregression": true,
+        "condition_nonregression": true
+      },
+      "q_gains": {
+        "dark": 0.02360515240810257,
+        "bright": 0.017766833821381445,
+        "low_contrast": 0.02302451886923418
+      },
+      "mean_q_gain": 0.02146550169957273,
+      "policy": {
+        "min_mean_q_gain": 0,
+        "max_condition_q_drop": 0.01
+      }
+    }
+  },
+  "activated": true,
+  "release_weights": "weights/releases/e219af25d4c072af_20261101T121534155210Z/model.pth"
+}

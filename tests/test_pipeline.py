@@ -101,7 +101,7 @@ class DatasetTests(unittest.TestCase):
             self.assertEqual(tuple(dataset[0][0].shape), (3, 256, 256))
             (images/'x.png').write_bytes(b'corrupt')
             with self.assertRaises(ValueError):
-                dataset[0]
+                SegmentationDataset(images, masks)[0]  # fresh dataset: the cache would hide the corruption
             (images/'x.jpg').write_bytes(b'duplicate')
             with self.assertRaises(ValueError):
                 paired_files(images, masks)
@@ -197,7 +197,7 @@ class InferenceTests(unittest.TestCase):
         fake.timed.return_value = (fake.return_value, 2.5)
         source, output = self.root/'source.png', self.root/'prediction.png'
         cv2.imwrite(str(source), self.image)
-        with patch('predict.Predictor', return_value=fake), patch.object(sys, 'argv',
+        with patch('predict.Predictor', return_value=fake), patch('predict.active_weights', return_value=self.weights), patch.object(sys, 'argv',
                    ['predict.py', '--image', str(source), '--out', str(output)]), contextlib.redirect_stdout(io.StringIO()) as stdout:
             predict.main()
         self.assertEqual(fake.call_count, 1)

@@ -1,0 +1,16 @@
+# Frozen releases verify source/manifests by byte hash, including on Windows.
+*.py text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.tex text eol=lf
+*.pth binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+# Saved split hashes were recorded from CRLF manifests; keep that checkout format.
+data/splits/*.txt text eol=crlf
+.gitignore text eol=lf
+.gitattributes text eol=lf

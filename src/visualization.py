@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from src.dataset import paired_files, read_ids
-from src.inference import Predictor
+from src.optimized_inference import ConfiguredPredictor as Predictor
 from src.metrics import MetricAccumulator
 from src.preprocessing import read_image, read_mask
 from src.utils import write_json, sha256

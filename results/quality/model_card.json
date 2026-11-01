@@ -1,0 +1,123 @@
+{
+  "created_utc": "2026-11-01T12:24:44.556048+00:00",
+  "status": "Validation-qualified release candidate; deployment-domain acceptance pending",
+  "task": "automatic salient-object segmentation",
+  "weights": "weights/releases/e219af25d4c072af_20261101T121534155210Z/model.pth",
+  "sha256": "e219af25d4c072afa09c4ee9eebca74a1a808d0e6b77ff841697ab31e70bf05b",
+  "parameters": 439393,
+  "resolution": 128,
+  "threshold": 0.5,
+  "memory_format": "channels_last",
+  "validation": {
+    "miou": 0.8590707901709094,
+    "bf1": 0.6283785282287085,
+    "q": 0.7898631115882491,
+    "cpu_ms": 24.31872037914692,
+    "size_bytes": 1787043,
+    "ces": 0.6793760273446485,
+    "images": 1055
+  },
+  "duts_test": {
+    "miou": 0.7144477016808604,
+    "bf1": 0.4440815500107017,
+    "q": 0.6333378561798128,
+    "cpu_ms": 17.141113767682807,
+    "size_bytes": 1787043,
+    "ces": 0.5629291291454767,
+    "images": 5019
+  },
+  "baseline_duts_test": {
+    "miou": 0.70488002447057,
+    "bf1": 0.3942296254171751,
+    "q": 0.6116849047545514,
+    "cpu_ms": 16.87338115162383,
+    "size_bytes": 1783881,
+    "ces": 0.5443845410653811,
+    "images": 5019
+  },
+  "validated_environment": {
+    "python": "3.12.4",
+    "torch": "2.7.1+cpu",
+    "numpy": "2.2.6",
+    "opencv": "4.12.0",
+    "matplotlib": "3.10.8",
+    "cpu_model": "Intel(R) Core(TM) 7 150U",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch_threads": 1
+  },
+  "gates": {
+    "passed": true,
+    "checks": {
+      "quality_gain": true,
+      "boundary_nonregression": true,
+      "region_nonregression": true,
+      "mean_cpu_margin": true,
+      "p95_cpu_budget": true,
+      "limited_large_regressions": true,
+      "positive_paired_interval": true
+    },
+    "q_gain": 0.01593603955296441,
+    "bf1_gain": 0.032568330655789235,
+    "p95_cpu_ms": 31.25,
+    "large_regression_fraction": 0.12890995260663507,
+    "policy": {
+      "min_q_gain": 0.005,
+      "max_miou_drop": 0.002,
+      "max_mean_cpu_ms": 40,
+      "max_p95_cpu_ms": 50,
+      "max_large_regression_fraction": 0.25,
+      "large_regression_q_drop": 0.05
+    }
+  },
+  "stress_gates": {
+    "passed": true,
+    "checks": {
+      "mean_nonregression": true,
+      "condition_nonregression": true
+    },
+    "q_gains": {
+      "dark": 0.02360515240810257,
+      "bright": 0.017766833821381445,
+      "low_contrast": 0.02302451886923418
+    },
+    "mean_q_gain": 0.02146550169957273,
+    "policy": {
+      "min_mean_q_gain": 0,
+      "max_condition_q_drop": 0.01
+    }
+  },
+  "paired_quality_interval": {
+    "passed": true,
+    "q_gain_95_interval": [
+      0.011013611790694452,
+      0.020859244819190128
+    ],
+    "draws": 2000,
+    "seed": 42,
+    "method": "Paired image bootstrap; global confusion IoU and mean per-image BF1",
+    "limitation": "Validation-sampling uncertainty only; not deployment-domain reliability"
+  },
+  "training": "Six additional epochs from own scratch-trained U-Net; BCE + 0.3 Dice; paired geometry and color augmentation",
+  "verification": {
+    "unit_tests": 56,
+    "passed": true,
+    "binary_masks_checked": [
+      "bag_bat",
+      "chair_study-table",
+      "cycle_inside",
+      "cycle_outside",
+      "desktop",
+      "desktop_table",
+      "dustbin",
+      "outside_plant",
+      "shoes",
+      "study_table"
+    ]
+  },
+  "comparison": "captured/model_predictions/comparison.png",
+  "limitations": [
+    "No captured-photo ground truth; target foreground must be defined",
+    "Visual failures remain for vegetation, bicycle structures and shoes versus rug",
+    "DUTS-TE evaluated once after freezing; no post-test parameter selection"
+  ]
+}

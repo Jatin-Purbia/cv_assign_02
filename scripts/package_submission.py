@@ -23,7 +23,8 @@ def main() -> None:
     for name in ('src', 'scripts', 'tests', 'configs', 'docs', 'captured', 'weights', 'report', 'results'):
         shutil.copytree(ROOT/name, target/name,
                         ignore=shutil.ignore_patterns('__pycache__', '*.pyc', '*.aux', '*.log', '*.out'))
-    for name in ('README.md', 'requirements.txt', 'predict.py', 'train.py', 'evaluate.py', 'benchmark.py'):
+    for name in ('README.md', 'requirements.txt', 'requirements-runtime.txt',
+                 'predict.py', 'train.py', 'evaluate.py', 'benchmark.py'):
         shutil.copyfile(ROOT/name, target/name)
     shutil.copytree(ROOT/'data/splits', target/'data/splits')
     shutil.copyfile(ROOT/'data/README.md', target/'data/README.md')

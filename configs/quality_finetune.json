@@ -1,0 +1,27 @@
+{
+  "seed": 42,
+  "data_root": "data/DUTS",
+  "train_manifest": "data/splits/train.txt",
+  "val_manifest": "data/splits/val.txt",
+  "model": {"kind": "unet", "base": 16, "depth": 4},
+  "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+  "resolution": 128,
+  "inference_resolution": 128,
+  "epochs": 6,
+  "batch_size": 16,
+  "training_threads": 10,
+  "lr": 0.0003,
+  "weight_decay": 0.0001,
+  "dice_weight": 0.3,
+  "gradient_clip": 5.0,
+  "patience": 3,
+  "threshold": 0.5,
+  "augmentation": {
+    "geometry_probability": 0.5,
+    "scale": 0.15,
+    "translation": 0.1,
+    "brightness": 0.2,
+    "contrast": 0.2,
+    "saturation": 0.15
+  }
+}

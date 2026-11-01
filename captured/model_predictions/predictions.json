@@ -1,0 +1,84 @@
+{
+  "checkpoint_sha256": "e219af25d4c072afa09c4ee9eebca74a1a808d0e6b77ff841697ab31e70bf05b",
+  "checkpoint": "C:\\Desktop\\7th_sem\\Computer Vision\\CV_Assign_02\\weights\\releases\\e219af25d4c072af_20261101T121534155210Z\\model.pth",
+  "resolution": 128,
+  "threshold": 0.5,
+  "memory_format": "channels_last",
+  "comparison_sha256": "a8d741471d13b8922e8da1d38c5a6d36bb1e502493af4882bd301fc8c5b79696",
+  "note": "No ground truth; review flags are area heuristics, not calibrated confidence",
+  "images": [
+    {
+      "id": "bag_bat",
+      "input_sha256": "eff2cfc3bd254f4ea2bb426e1ac5b4b2f28c9a19e5cdc080bb1fd6d5600ae011",
+      "mask": "masks/bag_bat.png",
+      "foreground_fraction": 0.3746337890625,
+      "review_flags": []
+    },
+    {
+      "id": "chair_study-table",
+      "input_sha256": "a25b2e3a1808e8c9de8b2cb258d6c05e9b3c1cd869cecbf741e764cd57de9dba",
+      "mask": "masks/chair_study-table.png",
+      "foreground_fraction": 0.2430877685546875,
+      "review_flags": []
+    },
+    {
+      "id": "cycle_inside",
+      "input_sha256": "91d6f9a0420ba1c3f656e0d668c9fb0c1b3de3a1edf19d9bea35ed98b84a507f",
+      "mask": "masks/cycle_inside.png",
+      "foreground_fraction": 0.2064971923828125,
+      "review_flags": []
+    },
+    {
+      "id": "cycle_outside",
+      "input_sha256": "16a0aa1a24467d071a4f99d8b16466d6a2254d1ef706256a92361a547ec06790",
+      "mask": "masks/cycle_outside.png",
+      "foreground_fraction": 0.1811981201171875,
+      "review_flags": []
+    },
+    {
+      "id": "desktop",
+      "input_sha256": "f558a3b961dd8cbbd5c7f99920c6b5ab81d059e7138416a6d0863d2714f43393",
+      "mask": "masks/desktop.png",
+      "foreground_fraction": 0.26348876953125,
+      "review_flags": []
+    },
+    {
+      "id": "desktop_table",
+      "input_sha256": "99f3a0c78ec14f56c8edca63e7b3b48768081668c59088d75e8524281445bbf0",
+      "mask": "masks/desktop_table.png",
+      "foreground_fraction": 0.3690185546875,
+      "review_flags": []
+    },
+    {
+      "id": "dustbin",
+      "input_sha256": "11fed75c3a5b65cbff7e653e7508c1bbb44ce75afba2a9d54a39cf53d5622f96",
+      "mask": "masks/dustbin.png",
+      "foreground_fraction": 0.11444091796875,
+      "review_flags": []
+    },
+    {
+      "id": "outside_plant",
+      "input_sha256": "98fc28b5cf6ce945ad88b57bfc0b75a3fec45a9fa40c8fd948655bcf35384385",
+      "mask": "masks/outside_plant.png",
+      "foreground_fraction": 0.05108642578125,
+      "review_flags": []
+    },
+    {
+      "id": "shoes",
+      "input_sha256": "b67ea1cb36195333b35d3baf636c5cb79ae5a62cfdb7f7bb100348825c261f08",
+      "mask": "masks/shoes.png",
+      "foreground_fraction": 0.2662200927734375,
+      "review_flags": []
+    },
+    {
+      "id": "study_table",
+      "input_sha256": "12b26a74ee33aa495fc0e8032c5fa6cc63dbc483f054078090fc9a45950859fc",
+      "mask": "masks/study_table.png",
+      "foreground_fraction": 0.170196533203125,
+      "review_flags": []
+    }
+  ],
+  "montages": [
+    "comparison.png"
+  ]
+}

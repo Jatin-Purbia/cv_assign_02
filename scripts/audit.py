@@ -47,6 +47,20 @@ def submission_status() -> dict:
                 'results/captured_figures/provenance.json', 'results/tests.json']
     missing = [name for name in required if not (ROOT/name).is_file()]
     issues = []
+    if (ROOT/'weights/final_model.pth').is_file() and (ROOT/'weights/final_model.freeze.json').is_file():
+        from src.inference import verify_frozen
+        try:
+            verify_frozen(ROOT/'weights/final_model.pth')
+        except (OSError, ValueError, KeyError) as error:
+            issues.append(f'Frozen model verification failed: {error}')
+    if (ROOT/'weights/active_model.json').exists():
+        from src.deployment import active_weights
+        try:
+            deployed = active_weights()
+            if sha256(deployed) != sha256(ROOT/'weights/final_model.pth'):
+                issues.append('Default prediction uses a newer release; original official results describe only the baseline')
+        except (OSError, ValueError, KeyError) as error:
+            issues.append(f'Active release verification failed: {error}')
     for name, split in [('validation_metrics', 'validation'), ('duts_test_metrics', 'duts-test'),
                         ('captured_metrics', 'captured')]:
         path = ROOT/'results'/f'{name}.json'

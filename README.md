@@ -1,132 +1,107 @@
-# Cost-Efficient Segmentation — CSL7360 Assignment 2
+# Cost-Efficient Segmentation - CSL7360 Assignment 2 (Track B)
 
-Jatin Purbia · B23CH1022 · Indian Institute of Technology Jodhpur
+Jatin Purbia - B23CH1022 - IIT Jodhpur
 
-An original PyTorch Track B implementation, with three lightweight encoder–decoder candidates, manual assignment-specific metrics, deterministic DUTS splitting, real training, shared CPU inference, validation model selection, and a strict prediction CLI.
+A 439,393-parameter U-Net trained from scratch for automatic salient-object
+segmentation. `predict.py` uses the qualified active release: 128-pixel internal
+resolution, threshold 0.5 and PyTorch channels-last layout. Inputs and output
+masks are 256x256. All assignment runtime code uses only the standard library,
+PyTorch, NumPy, OpenCV and Matplotlib; metrics are implemented from scratch.
+The separate pretrained reference-mask utility is described below.
 
-**Read [docs/STATUS.md](docs/STATUS.md) before submitting.** Missing personal photos, final experiments or a compiled report mean this is not a complete submission. No pretrained weights, invented metrics, or substitute photographs are included. Requirements and decisions are traced in [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md).
+## Results
 
-## Setup and verification
+| Model / set | N | mIoU | BF1 | Q | CPU ms | CES |
+|---|---:|---:|---:|---:|---:|---:|
+| Active / validation | 1,055 | 0.8591 | 0.6284 | 0.7899 | 24.32 | 0.6794 |
+| Active / DUTS-TE | 5,019 | 0.7144 | 0.4441 | 0.6333 | 17.14 | 0.5629 |
+| Baseline / validation | 1,055 | 0.8503 | 0.5958 | 0.7739 | 13.09 | 0.7005 |
+| Baseline / DUTS-TE | 5,019 | 0.7049 | 0.3942 | 0.6117 | 16.87 | 0.5444 |
 
-Python 3.10+; CPU PyTorch is sufficient. A GPU may be used for training by adding `--device cuda`. All timed evaluation is CPU-only.
+CPU: Intel Core 7 150U, one thread. Split: 9,498 train / 1,055 validation, seed 42.
+The active model is 1,787,043 bytes. Historical baseline and active timings used
+different numerical environments; see [model quality](docs/MODEL_QUALITY.md).
+The baseline report is [report/main.pdf](report/main.pdf); it describes the
+original 96-pixel model. Current release evidence is in `results/quality/` and
+`weights/active_model.json`. Do not attribute the baseline report to the new model.
+
+## Install, verify and predict
+
+The active release was qualified with Python 3.12.4 and the numerical package
+versions in `requirements-runtime.txt`. Its loader checks the runtime and hashes.
+For a fresh compatible Python 3.12 environment:
 
 ```powershell
-python -m pip install -r requirements.txt
-python -m unittest discover -v
+python -m pip install -r requirements-runtime.txt
 python -m scripts.verify
-python -m scripts.audit
+python predict.py --image captured/original/dustbin.jpeg --out output/mask.png
 ```
 
-The runtime imports only stdlib, PyTorch, NumPy, OpenCV and Matplotlib. See [docs/LIBRARY_COMPLIANCE.md](docs/LIBRARY_COMPLIANCE.md). No package installation occurs inside prediction. Launch each command from this directory. Run inference/evaluation in a fresh Python process so thread environment variables take effect before numerical imports.
+Prediction saves a 0/255 PNG, warms up once and times 20 further runs, printing
+exactly `T_CPU_ms: <ms>` and `S_disk_bytes: <bytes>`. Use `--weights` to select an
+explicit experimental checkpoint instead of the active release.
 
-## Official data
+Latest saved predictions: [captured/model_predictions/comparison.png](captured/model_predictions/comparison.png).
+To generate a fresh folder without overwriting them:
 
-Source: [official DUTS page](https://saliencydetection.net/duts/). Download scripts use the links published there, record observed SHA-256 hashes, validate archive paths before extraction and do not substitute datasets. If network downloads fail, download the archives in a browser and put them in `data/DUTS` before rerunning the commands.
+```powershell
+python -m scripts.predict_folder --images captured/original --out captured/prediction_runs
+```
+
+## Data and training
+
+DUTS images are excluded from Git. To reconstruct the dataset:
 
 ```powershell
 python -m scripts.download_duts --split TR
 python -m scripts.prepare_dataset --root data/DUTS
-```
-
-Expected layout: `data/DUTS/DUTS-TR/DUTS-TR-Image/` and `DUTS-TR-Mask/`. Preparation decodes all 10,553 pairs, rejects duplicates/unmatched stems and saves 9,498 training / 1,055 validation IDs with seed 42. No fake manifests are shipped if data preparation has not completed.
-
-## Training and validation-only selection
-
-```powershell
-python train.py --config configs/baseline.json --out experiments/baseline
-python -m scripts.run_experiments --config configs/baseline.json
-```
-
-The baseline is 40 epochs; early stopping may shorten it. The full experiment grid compares three architectures, BCE/Dice, and 128/160/192/256 resolutions. Expect substantial CPU training time. Training uses four CPU threads; all Predictor construction resets numerical runtimes to one thread before timing. Run directories are immutable: choose a new directory to change a configuration. The runner skips completed matching runs. `last_checkpoint.pth` preserves optimizer/scheduler states for research recovery; automatic mid-epoch resume is not implemented.
-
-A smaller **pilot**, limited to two epochs per candidate, is available to verify real-data behavior. It does not establish convergence or optimal quality:
-
-```powershell
-python -m scripts.run_experiments --config configs/pilot.json --experiments configs/pilot_experiments.json --out experiments/pilot
-```
-
-Do not run the pilot and full grid concurrently: both write `results/model_comparison.csv` and `results/selection.json`. The pilot compares Tiny FCN vs separable FCN and BCE vs BCE+Dice. Use the full grid for resolution ablation and a larger training budget. Configured hyperparameters, actual epoch counts, package versions, split hashes and best metrics are saved per run.
-
-To measure inference-resolution changes of an already trained run on validation only:
-
-```powershell
-python -m scripts.sweep_inference --run experiments/pilot/tiny4_bce_128 --resolutions 128 160 192 256
-```
-
-This appends actual validation observations and updates the selection. Training resolution remains recorded in `run.json`; each inference variant stores its own resolution. Run this before freezing.
-
-Optionally compare the selected candidate at a bounded set of decision thresholds, also before freezing: `python -m scripts.sweep_threshold --thresholds 0.4 0.45 0.5 0.55 0.6`. All rows and the final choice use DUTS-TR validation only. Training best-epoch Q is measured at 0.5; the final exported inference threshold is a separate validation-selected setting recorded in the bundle and final configuration.
-
-The bounded refinement uses a wider four-stage FCN and four epochs. After existing sweeps finish, preserve their measured rows with:
-
-```powershell
-python -m scripts.run_experiments --config configs/refinement.json --experiments configs/refinement_experiments.json --out experiments/refinement --append
-python -m scripts.sweep_inference --run experiments/refinement/tiny8_depth4_bce_128 --resolutions 64 96 128 160 192 256 --resume
-python -m scripts.sweep_threshold --thresholds 0.4 0.45 0.5 0.55 0.6
-```
-
-This changes capacity, depth and training budget together; it tests a practical refinement rather than isolating a single factor. The 40-epoch full grid remains separate and must not be described as completed unless its real artifacts exist.
-
-Freeze only when validation experiments and design choices are finished:
-
-```powershell
-python -m scripts.freeze_model
-python evaluate.py --split validation --weights weights/final_model.pth --images data/DUTS/DUTS-TR/DUTS-TR-Image --masks data/DUTS/DUTS-TR/DUTS-TR-Mask --manifest data/splits/val.txt --out results/validation_metrics.json
-```
-
-`weights/final_model.pth` is a plain uncompressed torch.save bundle containing architecture/settings, all learned weights and BN buffers. It is loaded using `weights_only=True`, CPU mapping and strict keys. The freeze record binds the selected checkpoint to validation evidence. Never use synthetic test checkpoints as final weights.
-
-Freeze also writes the complete selected training configuration to `configs/final.json`; `resolution` records training resolution and `inference_resolution` records the selected inference setting. Reproduce training with `python train.py --config configs/final.json --out experiments/reproduce_final`, then repeat the documented validation selection/export. Do not overwrite existing final-test evidence.
-
-## Final evaluation and timing
-
-After freezing, download and evaluate DUTS-TE **once** for reporting. Never use it to tune anything. Timing starts with a 256-square BGR image in memory and ends with a 256-square 0/1 mask. It includes color conversion, normalization, tensor conversion, internal resizing, forward pass, output resizing, sigmoid and thresholding. All 5,019 images are measured separately with process CPU time after warmup; I/O, original resizing, metrics and parameter loading are excluded. CPU threads and four required environment variables are forced to one.
-
-```powershell
 python -m scripts.download_duts --split TE
 python -m scripts.verify_dataset --root data/DUTS --split TE
-python benchmark.py --split duts-test --images data/DUTS/DUTS-TE/DUTS-TE-Image --masks data/DUTS/DUTS-TE/DUTS-TE-Mask --out results/duts_test_metrics.json
-python predict.py --image photo.jpg --out mask.png
 ```
 
-`benchmark.py` and `evaluate.py` share the complete evaluator; `predict.py` shares its exact `Predictor`. Prediction uses project-relative default weights even when launched from another directory and prints exactly:
+Photos are directly resized with INTER_AREA; masks use INTER_NEAREST and threshold
+128. DUTS-TE and captured photos are never used for training or model selection.
 
-```text
-T_CPU_ms: <measured mean to two decimal places>
-S_disk_bytes: <actual parameter file bytes>
-```
-
-The first output-producing inference is warmup, followed by exactly 20 timed runs. Errors are written to stderr and return nonzero. Use `--weights` only for explicit experimental/test checkpoints. The average official CPU time must be <=50 ms; otherwise CES is zero. A short diagnostic benchmark cannot establish this requirement.
-
-## Personal photographs
-
-Follow [captured/README.md](captured/README.md). Supply 5–10 genuine phone photos, manually annotate masks at 256 square and document at least three required condition categories. Visual PDF review confirms literal underscores in folder names. The optional Matplotlib polygon tool needs an interactive display:
+The original full training run is retained in `experiments/final/unet16_bce_128`.
+Its best checkpoint initializes six further epochs at LR 0.0003 with BCE + 0.3 Dice
+and paired geometry/color augmentation. The completed fine-tuning run is
+`experiments/quality/unet16_dice_aug_recovered`. Reproduce fine-tuning in a fresh
+run directory, preserving the recorded result:
 
 ```powershell
-python -m scripts.annotate --image my_phone_photo.jpg
-python -m scripts.verify_dataset --root captured --split captured
-python evaluate.py --split captured --images "captured/images_256" --masks "captured/masks_256" --out results/captured_metrics.json
-python -m scripts.create_figures overlays --images "captured/images_256" --masks "captured/masks_256" --out results/captured_figures
+python train.py --config configs/quality_finetune.json --out experiments/quality/reproduction
+python -m scripts.qualify_model --runs experiments/quality/reproduction --out results/quality_reproduction --activate
 ```
 
-All captures must appear in the report. The tool suggests the two lowest-Q observed images for failure review; inspect them and write evidence-based explanations in `report/failure_analysis.tex`. It does not invent explanations.
+During an interrupted new run, add `--resume` with the same config/output. Completed
+runs retain best weights and histories; optimizer checkpoints and derived sweep
+weights were pruned. Full baseline experiments and evaluation instructions are in
+[reproduction details](docs/REPRODUCIBILITY.md) and [experiment notes](docs/EXPERIMENTS.md).
+Official DUTS-TE evaluation is already recorded; do not repeat it to tune parameters.
 
-## Figures, report and packaging
+## Captured photos and reference masks
 
-Replace `<selected-run>` below with the directory recorded in `results/selection.json`.
+`captured/` contains 10 originals, resized photos, AI reference masks, provenance,
+and the latest trained-model predictions. The reference masks were generated by
+pretrained EfficientSAM-Ti in a separate user-requested utility. They are not
+manual ground truth and have not been used for official scoring, training or
+selection. See [captured/README.md](captured/README.md) and
+[reference_masks/README.md](reference_masks/README.md).
 
-```powershell
-python -m scripts.create_figures history --csv <selected-run>/history.csv --out results/figures
-python -m scripts.create_figures comparison
-python -m scripts.build_report
-python -m scripts.audit --submission
-python -m scripts.package_submission
-```
+Captured-photo accuracy, capture metadata and an updated final report remain
+unfinished. `scripts.audit --submission` reports outstanding requirements;
+`scripts.package_submission` only packages a final submission when that audit passes.
 
-`report/main.tex` contains the full mathematical method. Build fragments pull actual saved results into its mandatory table; absent evidence is explicitly labelled not evaluated. Install a LaTeX distribution with pdflatex/TikZ to compile. Inspect every PDF page before submission. Packaging refuses missing mandatory artifacts, copies only an allowlisted clean folder, and excludes DUTS and training checkpoints. Human review remains required for report quality, actual photographic provenance, condition coverage and failure analysis.
+## Repository layout
 
-An explicit portable compiler is also supported: `python -m scripts.build_report --engine C:/path/to/tectonic.exe`. Keep its cache under `tmp/` with `TECTONIC_CACHE_DIR`; compiler binaries/caches are not submission dependencies. `python -m scripts.package_submission --draft --out submission/INCOMPLETE_REVIEW` creates a clearly labelled review snapshot while mandatory personal-photo evidence is missing.
+- `src/`, `scripts/`, `tests/`: training, inference, metrics, evaluation and checks.
+- `configs/`, `data/splits/`: reproducible settings and fixed manifests.
+- `weights/`: baseline and the single active release with freeze/qualification evidence.
+- `experiments/`, `results/`: best checkpoints, histories and measured evidence.
+- `captured/`: personal photos, AI reference masks and saved model predictions.
+- `reference_masks/`: optional pretrained reference-generation code; no downloaded weights.
+- `report/`, `docs/`: baseline report and workflow documentation.
 
-Portable compiler setup is described in the [official Tectonic installation guide](https://tectonic-typesetting.github.io/install.html).
-
-Global mIoU uses one dataset confusion matrix. BF1 is averaged per image, uses four-connected foreground boundaries and centered 5x5 matching, with the specified empty-boundary handling. Zero-union class IoU is explicitly defined as 1. CES uses milliseconds, bytes and 4 MiB = 4,194,304 bytes.
+Generated sweep weights, optimizer checkpoints, caches, logs, downloaded DUTS and
+reference-model downloads are not committed. Only the best per-run checkpoints,
+the selected baseline export and the active deployment checkpoint are retained.

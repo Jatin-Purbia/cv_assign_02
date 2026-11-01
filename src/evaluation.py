@@ -3,7 +3,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 import torch
 from src.dataset import paired_files, read_ids
-from src.inference import Predictor, verify_frozen
+from src.inference import verify_frozen
+from src.optimized_inference import ConfiguredPredictor as Predictor
 from src.metrics import MetricAccumulator, ces
 from src.preprocessing import read_image, read_pair
 from src.utils import environment, sha256, write_json
@@ -36,7 +37,10 @@ def evaluate(weights: str | Path, images: str | Path, masks: str | Path,
     for key in ids:
         image, target = read_pair(*pairs[key])
         prediction, elapsed = predictor.timed(image)
+        previous = (metrics.tn, metrics.fp, metrics.fn, metrics.tp)
         diagnostic = metrics.update(torch.from_numpy(prediction), torch.from_numpy(target))
+        counts = [value-old for value, old in zip((metrics.tn, metrics.fp, metrics.fn, metrics.tp), previous)]
+        diagnostic['confusion_matrix'] = [counts[:2], counts[2:]]
         total_ms += elapsed
         per_image.append(dict(id=key, cpu_ms=elapsed, **diagnostic))
     result = dict(**metrics.compute(), cpu_ms=total_ms/len(ids), total_cpu_ms=total_ms,
@@ -45,6 +49,7 @@ def evaluate(weights: str | Path, images: str | Path, masks: str | Path,
                   evaluated_utc=datetime.now(timezone.utc).isoformat(), environment=environment(),
                   manifest_sha256=sha256(manifest) if manifest else None,
                   official=split == 'duts-test', frozen=frozen, per_image=per_image)
+    result['memory_format'] = predictor.memory_format
     result['ces'] = ces(result['q'], result['cpu_ms'], result['size_bytes'])
     write_json(output, result)
     return result

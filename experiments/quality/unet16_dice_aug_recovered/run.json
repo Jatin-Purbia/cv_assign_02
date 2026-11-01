@@ -1,0 +1,60 @@
+{
+  "config": {
+    "seed": 42,
+    "data_root": "data/DUTS",
+    "train_manifest": "data/splits/train.txt",
+    "val_manifest": "data/splits/val.txt",
+    "model": {
+      "kind": "unet",
+      "base": 16,
+      "depth": 4
+    },
+    "initialize_from": "experiments/final/unet16_bce_128/best.pth",
+    "resolution": 128,
+    "inference_resolution": 128,
+    "epochs": 6,
+    "batch_size": 16,
+    "training_threads": 10,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "dice_weight": 0.3,
+    "gradient_clip": 5.0,
+    "patience": 3,
+    "threshold": 0.5,
+    "augmentation": {
+      "geometry_probability": 0.5,
+      "scale": 0.15,
+      "translation": 0.1,
+      "brightness": 0.2,
+      "contrast": 0.2,
+      "saturation": 0.15
+    }
+  },
+  "environment": {
+    "python": "3.12.4",
+    "torch": "2.7.1+cpu",
+    "numpy": "2.2.6",
+    "opencv": "4.12.0",
+    "matplotlib": "3.10.8",
+    "cpu_model": "Intel(R) Core(TM) 7 150U",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch_threads": 10
+  },
+  "device": "cpu",
+  "train_count": 9498,
+  "val_count": 1055,
+  "train_manifest_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+  "val_manifest_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc",
+  "parameters": 439393,
+  "initialization": {
+    "path": "experiments/final/unet16_bce_128/best.pth",
+    "sha256": "a5c3450b4f38fd077950327418041f4537c3a26301ca7b7a2c4169ea890da2df",
+    "method": "Fine-tune own scratch-trained model; reset optimizer and scheduler"
+  },
+  "source_sha256": {
+    "src/trainer.py": "6e459a433f8ec58053b30e63f77b2cc027347bfd38e9514c604f053521673b11",
+    "src/dataset.py": "dc178659473319b801f13df216fcc79e207e27918535075c8141bbed2cf1fda3",
+    "src/losses.py": "8a17f09292047cc85d1f6595dd0acc03032a7d823c33ced1b13082709bbd6f1d",
+    "src/models.py": "9e088edd58a07ffb041ce7166887ca4b7879f55edb0dc054acfa1b38401b142a"
+  }
+}

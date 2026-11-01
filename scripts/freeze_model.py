@@ -5,7 +5,7 @@ import argparse
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
-from src.inference import Predictor
+from src.optimized_inference import ConfiguredPredictor as Predictor
 from src.utils import ROOT, read_json, write_json, sha256
 
 
@@ -32,7 +32,7 @@ def main() -> None:
     shutil.copyfile(source, out)
     write_json(out.with_suffix('.freeze.json'), dict(sha256=sha256(out),
                source_sha256={f: sha256(ROOT/f) for f in ('src/inference.py', 'src/preprocessing.py',
-                                                         'src/models.py', 'src/runtime.py')},
+                                                         'src/models.py', 'src/runtime.py', 'src/optimized_inference.py')},
                frozen_utc=datetime.now(timezone.utc).isoformat(), validation=val,
                selection=selected, run=run, statement='Selected using DUTS-TR validation only'))
     final_config = dict(run['config'])

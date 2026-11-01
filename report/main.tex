@@ -9,15 +9,15 @@
 \setlength{\emergencystretch}{2em}
 \title{Assignment 2: Cost-Efficient Segmentation under a Compute Budget}
 \author{Jatin Purbia --- B23CH1022\\CSL7360 --- Computer Vision\\Indian Institute of Technology Jodhpur}
-\date{29 October 2026}
+\date{1 November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-This project implements Track B using original lightweight fully convolutional networks trained from scratch. It shares one preprocessing and inference implementation across prediction, evaluation and timing, and computes the prescribed metrics manually. Experimental claims are limited to saved evidence. The results table explicitly identifies missing evaluations; authentic personal photographs and their annotations cannot be replaced by synthetic evidence. This document is an implementation report until all required experiments and photographs are present.
+We solve Track B of the assignment with a small U-Net trained from scratch (439{,}393 parameters, 1.78\,MB, no pretrained weights) that labels every pixel of a $256\times256$ photo as object or background. The network runs internally at $96\times96$, which keeps the mean single-thread CPU time near 17\,ms against the 50\,ms budget. Choices were made on a held-out part of DUTS-TR. On the untouched DUTS-TE set the model reaches mIoU $0.705$, BF1 $0.394$, $Q=0.612$ and CES $=0.544$. Metrics on our own phone photographs are pending because their hand-drawn masks have not been supplied.
 \end{abstract}
 
 \section{Introduction}
-The task is binary salient-object segmentation: assign each pixel to the main object(s) or background without interactive object selection. The objective is to maximize the prescribed Cost-Efficient Segmentation (CES) score subject to a mean single-thread CPU inference budget of 50 milliseconds. Region overlap alone is insufficient: the quality term also rewards accurate boundaries. Three small encoder--decoder designs explore standard, deeper and depthwise separable convolutions. No pretrained model or parameters are used.
+The task is binary salient-object segmentation: assign each pixel to the main object(s) or background. The objective is to maximize the Cost-Efficient Segmentation (CES) score subject to a mean single-thread CPU time of at most 50 milliseconds per photo. Region overlap alone is insufficient: the quality term also rewards accurate boundaries, and CES subtracts a small charge for time and file size. We follow Track B (a fully convolutional network). All code uses only the Python standard library, PyTorch, NumPy, OpenCV and Matplotlib, and the metrics are written by hand.
 
 \section{Dataset and leakage prevention}
 DUTS contains 10,553 training photographs (DUTS-TR) and 5,019 test photographs (DUTS-TE)~\cite{duts}. A sorted list of DUTS-TR stems is shuffled using Python's seed-42 random generator; round$(0.1N)$ IDs form validation. For the official training size this gives 9,498 training and 1,055 validation IDs. The actual manifests, once prepared, are saved and hashed. \input{environment.tex}
@@ -30,25 +30,25 @@ OpenCV reads BGR uint8 photographs. Every original photo is directly resized to 
 The timed pipeline starts after the original resize. It includes BGR-to-RGB conversion, tensor creation, normalization, optional bilinear downscaling, forward inference, bilinear upsampling of logits to $256\times256$, sigmoid, thresholding and conversion to a binary uint8 array. Masks on disk are multiplied by 255 after timing.
 
 \section{Proposed architectures}
-The default three-stage Tiny FCN uses widths $(b,2b,4b)$. Each encoder block is Conv--BatchNorm--ReLU; max pooling halves spatial size between blocks. The decoder bilinearly upsamples to each skip's size, concatenates encoder features and applies a new convolution block. A $1\times1$ head produces a single logit channel. The U-Net candidate adds a second convolution in each encoder stage. The separable candidate replaces each block with a depthwise spatial convolution followed by a pointwise projection, each normalized and activated. These designs were written using permitted PyTorch layers rather than importing a model architecture.
+All candidates are encoder--decoder networks built from convolution, batch normalization, ReLU, max pooling, bilinear upsampling and concatenation skips. Three families were explored in short pilot runs (Tiny FCN: one convolution per stage; U-Net: two per stage; depthwise-separable). The selected model is the U-Net with base width $b=16$ and four stages: encoder widths $16,32,64,128$, each stage with two Conv--BN--ReLU blocks, $2\times2$ max pooling between stages, then three decoder stages that bilinearly upsample, concatenate the matching encoder feature map and apply Conv--BN--ReLU. A $1\times1$ convolution produces one logit per pixel.
 
 \begin{figure}[htbp]\centering
-\begin{tikzpicture}[node distance=8mm and 9mm, box/.style={draw,rounded corners,align=center,font=\small,minimum height=11mm}, >=Stealth]
-\node[box] (in) {RGB\\$3\times r\times r$};
-\node[box,right=of in] (e1) {Encoder 1\\$b,r$};
-\node[box,right=of e1] (e2) {Encoder 2\\$2b,r/2$};
-\node[box,right=of e2] (e3) {Encoder 3\\$4b,r/4$};
-\node[box,below=of e3] (d2) {Up + concat\\Conv: $2b,r/2$};
-\node[box,left=of d2] (d1) {Up + concat\\Conv: $b,r$};
+\begin{tikzpicture}[node distance=6mm and 6mm, box/.style={draw,rounded corners,align=center,font=\small,minimum height=11mm}, >=Stealth]
+\node[box] (in) {RGB\\$3\times r^2$};
+\node[box,right=of in] (e1) {Enc 1\\$16,r$};
+\node[box,right=of e1] (e2) {Enc 2\\$32,r/2$};
+\node[box,right=of e2] (e3) {Enc 3\\$64,r/4$};
+\node[box,right=of e3] (e4) {Enc 4\\$128,r/8$};
+\node[box,below=of e3] (d3) {Up+cat\\$64,r/4$};
+\node[box,left=of d3] (d2) {Up+cat\\$32,r/2$};
+\node[box,left=of d2] (d1) {Up+cat\\$16,r$};
 \node[box,left=of d1] (out) {$1\times1$ head\\up to $256^2$};
-\draw[->] (in)--(e1); \draw[->] (e1)--(e2); \draw[->] (e2)--(e3);
-\draw[->] (e3)--(d2); \draw[->] (d2)--(d1); \draw[->] (d1)--(out);
-\draw[->,dashed] (e2)--(d2); \draw[->,dashed] (e1)--(d1);
+\draw[->] (in)--(e1); \draw[->] (e1)--(e2); \draw[->] (e2)--(e3); \draw[->] (e3)--(e4);
+\draw[->] (e4)--(d3); \draw[->] (d3)--(d2); \draw[->] (d2)--(d1); \draw[->] (d1)--(out);
+\draw[->,dashed] (e3)--(d3); \draw[->,dashed] (e2)--(d2); \draw[->,dashed] (e1)--(d1);
 \end{tikzpicture}
-\caption{Actual three-stage Tiny FCN topology. $r$ is internal resolution; $b$ is base width. Dashed arrows are concatenation skips. The chosen configuration and parameter count must be read from the frozen run, not inferred from this generic diagram.}
+\caption{Selected U-Net ($r=96$ at inference, $r=128$ during training). Dashed arrows are concatenation skips.}
 \end{figure}
-
-Depth, base width, decoder width, kernel size, skip usage, and bilinear versus transpose upsampling are configurable. Untrained parameter/latency diagnostics are recorded separately from quality experiments. Fewer parameters do not establish lower measured latency.
 \input{selected_architecture.tex}
 
 \section{Mathematical formulation}
@@ -101,9 +101,9 @@ Q\left[1-0.20\frac{T_{CPU}}{50}-0.10\min\left(1,\frac{S_{disk}}{4194304}\right)\
 $T_{CPU}$ is in milliseconds and $S_{disk}$ is the actual parameter-file size in bytes. For $Q=.7$, $T=20$ and $S=524288$, the exact result is $.63525$, consistent with the PDF's rounded $.635$.
 
 \section{Training methodology}
-The baseline configuration uses AdamW, learning rate $10^{-3}$, weight decay $10^{-4}$, cosine scheduling over 40 epochs, batch size 8, patience 8 and gradient norm clipping at 5. The explicitly limited CPU pilot configuration uses two epochs, batch size 16 and smaller widths at resolution 128. These are different experiment budgets and must be identified when interpreting results. Every run saves its complete configuration, package versions, manifest hashes, best epoch, best validation metrics and per-epoch CSV logs. Best epoch selection maximizes validation $Q$ within each training run. Across candidates, final selection maximizes measured validation CES. Training checkpoints include optimizer and scheduler states; inference exports retain all learned weights and batch-normalization buffers.
+The selected network was trained once for 16 epochs with AdamW (learning rate $3\times10^{-3}$, weight decay $10^{-4}$), cosine learning-rate decay, batch size 16, gradient-norm clipping at 5 and pure BCE loss ($\beta=0$), using the 9{,}498 training images at $128\times128$ internal resolution; the loss is computed on logits upsampled to $256\times256$. The best epoch by validation $Q$ (epoch 15, $Q=0.7877$ at $r=128$) was kept. Training took about 10 minutes per epoch on the CPU listed below using 10 threads; the timed pipeline always uses one. Validation $Q$ rose steadily from 0.51 (epoch 1) to 0.79 (epoch 16), see Figure~\ref{fig:train}. Each run stores its configuration, package versions, split hashes and per-epoch log.
 
-The bounded refinement increases base width to 8 and encoder depth to four, with a four-epoch budget at training resolution 128. It is motivated by weak pilot boundary quality and low-resolution latency headroom. Capacity, context and training duration change together, so this is a practical refinement rather than a causal depth-only ablation. The full 40-epoch grid is supplied as configuration and is not claimed executed. Best-epoch training validation uses threshold $0.5$; inference resolution and the final threshold are then selected on the same DUTS-TR validation set. Test sets remain isolated until freeze.
+\IfFileExists{../results/figures/training.png}{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{../results/figures/training.png}\caption{Training and validation curves of the selected run.}\label{fig:train}\end{figure}}{}
 
 \section{Computational efficiency and timing}
 The encoder operates at a configurable internal resolution; the full output remains $256\times256$. Standard blocks prioritize simple CPU kernels, while separable blocks reduce arithmetic at the possible cost of additional operator overhead. Single-thread execution is configured before NumPy, OpenCV or PyTorch imports through four required environment variables, followed by their thread-setting APIs. Inference uses CPU tensors, \texttt{eval()} and \texttt{inference\_mode()}. No inference subprocess, data-loader worker or alternate engine is used.
@@ -111,39 +111,54 @@ The encoder operates at a configurable internal resolution; the full output rema
 One full warmup is excluded. For official timing, each DUTS-TE photo is loaded and resized outside the timer. The exact shared inference function is wrapped by \texttt{time.process\_time()}. The sum of all 5,019 durations divided by 5,019 gives $T_{CPU}$. Metrics and file exports occur outside timing. The prediction CLI instead uses its output-producing pass as warmup, then averages 20 additional full-pipeline runs. Size uses \texttt{os.path.getsize}; plain \texttt{torch.save} is not post-compressed.
 
 \section{Experimental comparison}
-The planned comparison isolates architecture, BCE versus BCE+Dice, and internal resolution. \texttt{results/model\_comparison.csv} contains only measured DUTS-TR validation scores. The selected row is saved with its checkpoint provenance before either final test set is opened. Synthetic fixtures verify software behavior; synthetic latency diagnostics do not establish DUTS segmentation quality or official timing compliance. Validation CES is an estimate for selection, while only the complete DUTS-TE CES is official.
-\IfFileExists{../results/figures/q_vs_time.png}{\begin{figure}[htbp]\centering\includegraphics[width=.9\linewidth]{../results/figures/q_vs_time.png}\caption{Measured validation quality versus complete CPU pipeline time. Each point is an observed configuration; the red star marks selection. Full configuration names appear in the CES comparison.}\end{figure}}{}
-\IfFileExists{../results/figures/size_vs_q.png}{\begin{figure}[htbp]\centering\includegraphics[width=.9\linewidth]{../results/figures/size_vs_q.png}\caption{Measured validation quality versus actual saved parameter size. Markers identify architecture/loss groups and the selected configuration.}\end{figure}}{}
-\IfFileExists{../results/figures/ces_comparison.png}{\begin{figure}[htbp]\centering\includegraphics[width=.95\linewidth]{../results/figures/ces_comparison.png}\caption{Measured validation CES estimates and full candidate names. The selected configuration is red.}\end{figure}}{}
-\IfFileExists{../results/figures/training.png}{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{../results/figures/training.png}\caption{Actual recorded training and validation curves for the selected run.}\end{figure}}{}
+Before the final run we ran three two-epoch pilots (Tiny FCN with BCE, Tiny FCN with BCE+Dice, depthwise-separable FCN with BCE; about 3--4k parameters each). They reached validation $Q$ between 0.45 and 0.47, with BCE and BCE+Dice indistinguishable at this budget and the depthwise variant slower on CPU. We therefore moved to the larger U-Net and trained it with BCE only. No separate Dice run of the final model was made, so we make no claim about Dice at full training length.
+
+Using the trained U-Net, we then varied the \emph{inference} resolution on the validation set (Table~\ref{tab:res}). Because CES charges $0.2\,T/50$ for time, the smaller resolution wins even though $Q$ is slightly lower: $r=96$ gives CES $0.704$ against $0.678$ at $r=128$. Resolutions above the training size lose quality. A threshold sweep from 0.4 to 0.6 at $r=96$ changed $Q$ by under 0.01, so the default 0.5 was kept. All rows come from \texttt{results/model\_comparison.csv}. Individual validation timings there are noisy by a few ms because other programs ran concurrently (one 144-pixel run even shows 50.8\,ms); the final timing in Table~\ref{tab:main} is a clean 5{,}019-image measurement.
+
+\begin{table}[htbp]\centering\small
+\begin{tabular}{rrrrrr}\toprule
+Inference $r$ & mIoU & BF1 & $Q$ & Val.\ ms & CES\\\midrule
+96 & 0.8503 & 0.5958 & 0.7739 & 11.9 & 0.7041\\
+112 & 0.8580 & 0.6190 & 0.7863 & 18.8 & 0.6938\\
+128 & 0.8576 & 0.6245 & 0.7877 & 24.1 & 0.6783\\
+160 & 0.8368 & 0.5970 & 0.7648 & 42.6 & 0.6020\\\bottomrule
+\end{tabular}
+\caption{Validation-only comparison of inference resolution for the trained U-Net.}\label{tab:res}
+\end{table}
+\IfFileExists{../results/figures/ces_comparison.png}{\begin{figure}[htbp]\centering\includegraphics[width=.9\linewidth]{../results/figures/ces_comparison.png}\caption{Validation CES of every measured configuration; the selected one is red.}\end{figure}}{}
 
 \section{Results}
 \begin{table}[htbp]\centering\small
 \resizebox{\linewidth}{!}{\input{results_table.tex}}
-\caption{Evidence-derived results. Each row's time is measured on that set; storage is shared for the same checkpoint. Validation CES is an estimate; DUTS-TE CES is official only after all 5,019 images are evaluated. Missing evidence is reported as not evaluated.}
+\caption{Final results of the single frozen model. Time is measured per set with \texttt{time.process\_time} on one thread; DUTS-TE is the official number. Captured-photo metrics are not yet available (see below).}\label{tab:main}
 \end{table}
-CPU and saved split information: \input{environment.tex} Timing compliance must be assessed from the complete DUTS-TE row, not a short synthetic benchmark or an individual prediction.
+The test CPU time is 16.9\,ms, well inside the 50\,ms limit, and the file is 1{,}783{,}881 bytes (0.43\,\% of 4\,MiB), so the penalty terms cost only about $11\%$ of $Q$. The gap between validation ($Q=0.774$) and DUTS-TE ($Q=0.612$) is large. Validation images come from the training distribution, whereas DUTS-TE contains many photographs with several objects, small objects and clutter, and the boundary score drops most (BF1 $0.60\to0.39$): a 439k-parameter network working at $96\times96$ cannot localize fine contours. CPU: \input{environment.tex}
 
 \section{Captured-photo results}
-\input{captured_figures.tex}
-All captures must appear, including unsuccessful cases. Annotation records document objects, lighting, distance, clutter, occlusion and manual annotation method. Ground truth and predictions are shown with the same green foreground and opacity $0.45$ over the corresponding image.
+Ten phone photographs (indoor and outdoor, near and far, cluttered scenes, a plant in a garden, bicycles in a shed) are stored in \texttt{captured/original} and resized to \texttt{captured/images\_256}. \textbf{Their ground-truth masks have not been drawn yet}, so mIoU, BF1 and the true/predicted overlay pairs required by the assignment are not reported; the Captured row of Table~\ref{tab:main} is therefore empty. Figure~\ref{fig:inf} shows predictions only (green overlay, photo on the left of each pair) as a qualitative preview.
+\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{figures/inference_montage.png}\caption{Predictions on the ten own photographs (no ground truth).}\label{fig:inf}\end{figure}
 
 \section{Failure analysis}
-\IfFileExists{failure_analysis.tex}{\input{failure_analysis.tex}}{At least two genuine failure explanations remain pending evaluated-image review. The visualization utility ranks actual observed examples by per-image quality to suggest candidates; a low score alone does not establish its cause. No lighting, occlusion, clutter or small-object failure is claimed without inspecting the relevant photo and mask.}
+Two failure modes are visible in Figure~\ref{fig:inf}. These are visual judgements, not measured IoU values, since ground truth is not available for these photos.
+\begin{itemize}
+\item \textbf{Clutter and many similar objects} (\texttt{cycle\_inside}, \texttt{cycle\_outside}, \texttt{study\_table}). The photo contains a row of bicycles or a desk full of items and no single dominant object. The model marks only part of the nearest bicycle or an arbitrary desk region. DUTS teaches ``salient'' as a high-contrast, centred object; with many equal candidates the small network has too little global context to choose.
+\item \textbf{Small, low-contrast object} (\texttt{outside\_plant}). The plants occupy a small area and resemble the soil in colour and texture, so almost nothing is segmented. At $96\times96$ internal resolution a small plant spans only a few pixels and gives weak features.
+\end{itemize}
+A milder issue is bleeding onto the supporting surface (\texttt{shoes}: the rug is included), probably because object and support share edges and colour statistics.
 
 \section{Conclusion and limitations}
-The implementation provides an auditable route from deterministic data preparation to trained parameter export and shared CPU evaluation. Architecture complexity is justified only by measured validation performance. Final segmentation quality, the full CPU budget, captured-photo generalization and submission completeness depend on the evidence in the results table. Pending entries prevent a submission-ready claim.
+A 439k-parameter U-Net trained from scratch gives $Q=0.612$ and CES $=0.544$ on DUTS-TE at 16.9\,ms and 1.78\,MB, comfortably inside the compute budget. The score is limited by boundary accuracy and cluttered scenes. A larger model or higher input resolution could raise $Q$ while staying under 50\,ms; we did not explore this because one training run already took about three hours on CPU. Limitations: a single full training run, no Dice ablation at full length, no GPU, and captured-photo metrics still pending the hand-drawn masks.
 
 \clearpage
 \section{Reproducibility}
-Run these PowerShell commands in an outputs-empty copy containing source, configurations and genuine input data. Existing submitted weights/results should be preserved in a separate copy. Backticks continue a command on the next line. The complete selected configuration is \path{configs/final.json}; the single ``fixed'' trial below reproduces that configuration without searching against either test set. Original comparison/sweep commands are documented in the root README and \path{docs/REPRODUCIBILITY.md}.
+Run these PowerShell commands in an outputs-empty copy containing source, configurations and genuine input data. Existing submitted weights/results should be preserved in a separate copy. Backticks continue a command on the next line. The complete selected configuration is \path{configs/final.json}; the training command below reproduces it without touching either test set (the training configuration is \path{configs/final_train.json}). Original comparison/sweep commands are documented in the root README and \path{docs/REPRODUCIBILITY.md}.
 {\small
 \begin{verbatim}
 python -m pip install -r requirements.txt
 python -m scripts.verify
 python -m scripts.download_duts --split TR
 python -m scripts.prepare_dataset --root data/DUTS
-python train.py --config configs/final.json --out experiments/reproduce/fixed
+python train.py --config configs/final_train.json --out experiments/final/unet16_bce_128
 # Reuses that completed run, evaluates validation and records selection:
 python -m scripts.run_experiments --config configs/final.json `
   --experiments configs/reproduce_experiments.json --out experiments/reproduce

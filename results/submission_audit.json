@@ -1,0 +1,21 @@
+{
+  "missing": [
+    "weights/final_model.pth",
+    "weights/final_model.freeze.json",
+    "results/validation_metrics.json",
+    "results/duts_test_metrics.json",
+    "results/captured_metrics.json",
+    "results/model_comparison.csv",
+    "captured/metadata.json",
+    "report/failure_analysis.tex",
+    "results/captured_figures/index.json"
+  ],
+  "issues": [],
+  "automated_ready": false,
+  "manual_review_required": [
+    "phone authenticity/condition coverage",
+    "all report figures and metrics",
+    "two evidence-based failure explanations",
+    "PDF visual inspection"
+  ]
+}

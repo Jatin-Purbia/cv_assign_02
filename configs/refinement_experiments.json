@@ -1,0 +1,5 @@
+{
+  "trials": [
+    {"name": "tiny8_depth4_bce_128", "overrides": {}}
+  ]
+}

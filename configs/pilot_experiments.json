@@ -1,0 +1,7 @@
+{
+  "trials": [
+    {"name": "tiny4_bce_128", "overrides": {}},
+    {"name": "depthwise8_bce_128", "overrides": {"model": {"kind": "depthwise", "base": 8, "depth": 3}}},
+    {"name": "tiny4_dice_128", "overrides": {"dice_weight": 0.5}}
+  ]
+}

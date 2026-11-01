@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+data/DUTS/
+checkpoints/*.pth
+experiments/candidates/
+tmp/
+submission/
+report/*.aux
+report/*.log
+report/*.out

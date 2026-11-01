@@ -1,0 +1,7 @@
+{
+  "seed": 42,
+  "train": 9498,
+  "validation": 1055,
+  "train_sha256": "b3f5a00e7439eec084eb4f0b80caa385b9eb3d01623bea0333927757e730e71c",
+  "val_sha256": "a4e75d3afb71ef71815d5debd315f03bb020587c26ef3f7e39b45908a4d810cc"
+}

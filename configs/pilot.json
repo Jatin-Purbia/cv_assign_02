@@ -1,0 +1,16 @@
+{
+  "seed": 42,
+  "data_root": "data/DUTS",
+  "train_manifest": "data/splits/train.txt",
+  "val_manifest": "data/splits/val.txt",
+  "model": {"kind": "tiny", "base": 4, "depth": 3},
+  "resolution": 128,
+  "epochs": 2,
+  "batch_size": 16,
+  "training_threads": 4,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "dice_weight": 0.0,
+  "gradient_clip": 5.0,
+  "patience": 2
+}

@@ -1,0 +1,12 @@
+{
+  "name": "tiny4_bce_128_infer64",
+  "weights": "experiments\\pilot4\\tiny4_bce_128\\inference_64.pth",
+  "validation_path": "experiments\\pilot4\\tiny4_bce_128\\inference_64_validation.json",
+  "parameters": "3793",
+  "miou": 0.6055523748991201,
+  "bf1": 0.13827567718957942,
+  "q": 0.4653693655862578,
+  "cpu_ms": 3.495260663507109,
+  "size_bytes": 25601,
+  "ces": 0.45857896662142267
+}

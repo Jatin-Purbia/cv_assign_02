@@ -1,0 +1,42 @@
+test_manual_polygon_rasterization (tests.test_compliance.ComplianceTests.test_manual_polygon_rasterization) ... ok
+test_runtime_precedes_numeric_imports (tests.test_compliance.ComplianceTests.test_runtime_precedes_numeric_imports) ... ok
+test_source_audit (tests.test_compliance.ComplianceTests.test_source_audit) ... ok
+test_border_touching (tests.test_metrics.MetricsTests.test_border_touching) ... ok
+test_both_boundaries_empty (tests.test_metrics.MetricsTests.test_both_boundaries_empty) ... ok
+test_full_mask_has_border_boundary (tests.test_metrics.MetricsTests.test_full_mask_has_border_boundary) ... ok
+test_global_aggregation_not_per_image_average (tests.test_metrics.MetricsTests.test_global_aggregation_not_per_image_average) ... ok
+test_invalid_masks (tests.test_metrics.MetricsTests.test_invalid_masks) ... ok
+test_no_boundary (tests.test_metrics.MetricsTests.test_no_boundary) ... ok
+test_nontrivial_precision_recall (tests.test_metrics.MetricsTests.test_nontrivial_precision_recall) ... ok
+test_one_boundary_empty (tests.test_metrics.MetricsTests.test_one_boundary_empty) ... ok
+test_perfect_foreground_and_background (tests.test_metrics.MetricsTests.test_perfect_foreground_and_background) ... ok
+test_range_determinism_differing_objects (tests.test_metrics.MetricsTests.test_range_determinism_differing_objects) ... ok
+test_single_pixel (tests.test_metrics.MetricsTests.test_single_pixel) ... ok
+test_vector_window_matches_pooling_and_analytic_corner (tests.test_metrics.MetricsTests.test_vector_window_matches_pooling_and_analytic_corner) ... ok
+test_window_offsets_and_corners (tests.test_metrics.MetricsTests.test_window_offsets_and_corners) ... ok
+test_wrong_foreground_and_background (tests.test_metrics.MetricsTests.test_wrong_foreground_and_background) ... ok
+test_assignment_example (tests.test_metrics.ScoringTests.test_assignment_example) ... ok
+test_invalid_scores (tests.test_metrics.ScoringTests.test_invalid_scores) ... ok
+test_limit_and_cap (tests.test_metrics.ScoringTests.test_limit_and_cap) ... ok
+test_q (tests.test_metrics.ScoringTests.test_q) ... ok
+test_missing_duplicate_and_corrupt (tests.test_pipeline.DatasetTests.test_missing_duplicate_and_corrupt) ... ok
+test_split (tests.test_pipeline.DatasetTests.test_split) ... ok
+test_cli_exact_stdout_fresh_process (tests.test_pipeline.InferenceTests.test_cli_exact_stdout_fresh_process) ... ok
+test_cli_exactly_twenty_timed_runs_after_warmup (tests.test_pipeline.InferenceTests.test_cli_exactly_twenty_timed_runs_after_warmup) ... ok
+test_evaluation_uses_identical_prediction (tests.test_pipeline.InferenceTests.test_evaluation_uses_identical_prediction) ... ok
+test_frozen_hash_and_official_count_guards (tests.test_pipeline.InferenceTests.test_frozen_hash_and_official_count_guards) ... ok
+test_roundtrip_shape_and_determinism (tests.test_pipeline.InferenceTests.test_roundtrip_shape_and_determinism) ... ok
+test_thread_environment (tests.test_pipeline.InferenceTests.test_thread_environment) ... ok
+test_timing_wraps_full_call (tests.test_pipeline.InferenceTests.test_timing_wraps_full_call) ... ok
+test_analytic_loss (tests.test_pipeline.ModelLossTests.test_analytic_loss) ... ok
+test_candidates_forward_backward (tests.test_pipeline.ModelLossTests.test_candidates_forward_backward) ... ok
+test_channels_range_and_shapes (tests.test_pipeline.PreprocessingTests.test_channels_range_and_shapes) ... ok
+test_interpolation_contract (tests.test_pipeline.PreprocessingTests.test_interpolation_contract) ... ok
+test_mismatched_original_dimensions (tests.test_pipeline.PreprocessingTests.test_mismatched_original_dimensions) ... ok
+test_threshold (tests.test_pipeline.PreprocessingTests.test_threshold) ... ok
+test_real_optimizer_checkpoint_loop_on_synthetic_data (tests.test_pipeline.TrainingSmokeTests.test_real_optimizer_checkpoint_loop_on_synthetic_data) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 25.082s
+
+OK

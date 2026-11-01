@@ -1,0 +1,1176 @@
+{
+  "imports": [
+    {
+      "file": "benchmark.py",
+      "line": 2,
+      "module": "evaluate"
+    },
+    {
+      "file": "evaluate.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "evaluate.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "evaluate.py",
+      "line": 5,
+      "module": "json"
+    },
+    {
+      "file": "evaluate.py",
+      "line": 6,
+      "module": "src.evaluation"
+    },
+    {
+      "file": "predict.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "predict.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "predict.py",
+      "line": 5,
+      "module": "sys"
+    },
+    {
+      "file": "predict.py",
+      "line": 6,
+      "module": "pathlib"
+    },
+    {
+      "file": "predict.py",
+      "line": 7,
+      "module": "cv2"
+    },
+    {
+      "file": "predict.py",
+      "line": 8,
+      "module": "src.inference"
+    },
+    {
+      "file": "predict.py",
+      "line": 9,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "predict.py",
+      "line": 10,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 6,
+      "module": "cv2"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 7,
+      "module": "matplotlib.pyplot"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 8,
+      "module": "matplotlib.widgets"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 9,
+      "module": "torch"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 10,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "scripts\\annotate.py",
+      "line": 33,
+      "module": "shutil"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 5,
+      "module": "ast"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 6,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 7,
+      "module": "sys"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 8,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\audit.py",
+      "line": 63,
+      "module": "src.captured"
+    },
+    {
+      "file": "scripts\\build_report.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\build_report.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\build_report.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\build_report.py",
+      "line": 6,
+      "module": "shutil"
+    },
+    {
+      "file": "scripts\\build_report.py",
+      "line": 7,
+      "module": "subprocess"
+    },
+    {
+      "file": "scripts\\build_report.py",
+      "line": 8,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\build_report.py",
+      "line": 46,
+      "module": "src.inference"
+    },
+    {
+      "file": "scripts\\create_figures.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\create_figures.py",
+      "line": 3,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\create_figures.py",
+      "line": 4,
+      "module": "src.visualization"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 6,
+      "module": "numpy"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 7,
+      "module": "torch"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 8,
+      "module": "src.inference"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 9,
+      "module": "src.models"
+    },
+    {
+      "file": "scripts\\diagnostics.py",
+      "line": 10,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\download_duts.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\download_duts.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\download_duts.py",
+      "line": 5,
+      "module": "shutil"
+    },
+    {
+      "file": "scripts\\download_duts.py",
+      "line": 6,
+      "module": "urllib.request"
+    },
+    {
+      "file": "scripts\\download_duts.py",
+      "line": 7,
+      "module": "zipfile"
+    },
+    {
+      "file": "scripts\\download_duts.py",
+      "line": 8,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\download_duts.py",
+      "line": 9,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\freeze_model.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\freeze_model.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\freeze_model.py",
+      "line": 5,
+      "module": "shutil"
+    },
+    {
+      "file": "scripts\\freeze_model.py",
+      "line": 6,
+      "module": "datetime"
+    },
+    {
+      "file": "scripts\\freeze_model.py",
+      "line": 7,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\freeze_model.py",
+      "line": 8,
+      "module": "src.inference"
+    },
+    {
+      "file": "scripts\\freeze_model.py",
+      "line": 9,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\package_submission.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\package_submission.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\package_submission.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\package_submission.py",
+      "line": 6,
+      "module": "shutil"
+    },
+    {
+      "file": "scripts\\package_submission.py",
+      "line": 7,
+      "module": "scripts.audit"
+    },
+    {
+      "file": "scripts\\package_submission.py",
+      "line": 8,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\prepare_dataset.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\prepare_dataset.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\prepare_dataset.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\prepare_dataset.py",
+      "line": 6,
+      "module": "src.dataset"
+    },
+    {
+      "file": "scripts\\prepare_dataset.py",
+      "line": 7,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "scripts\\prepare_dataset.py",
+      "line": 8,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\review_failures.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\review_failures.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\review_failures.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\review_failures.py",
+      "line": 6,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\review_failures.py",
+      "line": 7,
+      "module": "src.visualization"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 5,
+      "module": "copy"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 6,
+      "module": "csv"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 7,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 8,
+      "module": "src.evaluation"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 9,
+      "module": "src.trainer"
+    },
+    {
+      "file": "scripts\\run_experiments.py",
+      "line": 10,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 5,
+      "module": "csv"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 6,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 7,
+      "module": "src.inference"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 8,
+      "module": "src.evaluation"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 9,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 10,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\sweep_inference.py",
+      "line": 11,
+      "module": "torch"
+    },
+    {
+      "file": "scripts\\sweep_threshold.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\sweep_threshold.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\sweep_threshold.py",
+      "line": 5,
+      "module": "csv"
+    },
+    {
+      "file": "scripts\\sweep_threshold.py",
+      "line": 6,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\sweep_threshold.py",
+      "line": 7,
+      "module": "src.inference"
+    },
+    {
+      "file": "scripts\\sweep_threshold.py",
+      "line": 8,
+      "module": "src.evaluation"
+    },
+    {
+      "file": "scripts\\sweep_threshold.py",
+      "line": 9,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\verify.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\verify.py",
+      "line": 4,
+      "module": "io"
+    },
+    {
+      "file": "scripts\\verify.py",
+      "line": 5,
+      "module": "unittest"
+    },
+    {
+      "file": "scripts\\verify.py",
+      "line": 6,
+      "module": "datetime"
+    },
+    {
+      "file": "scripts\\verify.py",
+      "line": 7,
+      "module": "src.utils"
+    },
+    {
+      "file": "scripts\\verify.py",
+      "line": 8,
+      "module": "scripts.audit"
+    },
+    {
+      "file": "scripts\\verify_dataset.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "scripts\\verify_dataset.py",
+      "line": 3,
+      "module": "argparse"
+    },
+    {
+      "file": "scripts\\verify_dataset.py",
+      "line": 4,
+      "module": "pathlib"
+    },
+    {
+      "file": "scripts\\verify_dataset.py",
+      "line": 5,
+      "module": "src.dataset"
+    },
+    {
+      "file": "scripts\\verify_dataset.py",
+      "line": 6,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "scripts\\verify_dataset.py",
+      "line": 7,
+      "module": "src.captured"
+    },
+    {
+      "file": "src\\captured.py",
+      "line": 2,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\captured.py",
+      "line": 3,
+      "module": "cv2"
+    },
+    {
+      "file": "src\\captured.py",
+      "line": 4,
+      "module": "src.dataset"
+    },
+    {
+      "file": "src\\captured.py",
+      "line": 5,
+      "module": "src.utils"
+    },
+    {
+      "file": "src\\dataset.py",
+      "line": 2,
+      "module": "random"
+    },
+    {
+      "file": "src\\dataset.py",
+      "line": 3,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\dataset.py",
+      "line": 4,
+      "module": "torch"
+    },
+    {
+      "file": "src\\dataset.py",
+      "line": 5,
+      "module": "torch.utils.data"
+    },
+    {
+      "file": "src\\dataset.py",
+      "line": 6,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 2,
+      "module": "datetime"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 3,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 4,
+      "module": "torch"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 5,
+      "module": "src.dataset"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 6,
+      "module": "src.inference"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 7,
+      "module": "src.metrics"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 8,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 9,
+      "module": "src.utils"
+    },
+    {
+      "file": "src\\evaluation.py",
+      "line": 29,
+      "module": "src.captured"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 3,
+      "module": "os"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 4,
+      "module": "time"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 5,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 6,
+      "module": "numpy"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 7,
+      "module": "torch"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 8,
+      "module": "torch.nn"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 9,
+      "module": "src.models"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 10,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "src\\inference.py",
+      "line": 11,
+      "module": "src.utils"
+    },
+    {
+      "file": "src\\losses.py",
+      "line": 2,
+      "module": "torch"
+    },
+    {
+      "file": "src\\losses.py",
+      "line": 3,
+      "module": "torch.nn"
+    },
+    {
+      "file": "src\\metrics.py",
+      "line": 2,
+      "module": "math"
+    },
+    {
+      "file": "src\\metrics.py",
+      "line": 3,
+      "module": "numpy"
+    },
+    {
+      "file": "src\\metrics.py",
+      "line": 4,
+      "module": "torch"
+    },
+    {
+      "file": "src\\metrics.py",
+      "line": 5,
+      "module": "torch.nn"
+    },
+    {
+      "file": "src\\models.py",
+      "line": 2,
+      "module": "torch"
+    },
+    {
+      "file": "src\\models.py",
+      "line": 3,
+      "module": "torch"
+    },
+    {
+      "file": "src\\models.py",
+      "line": 4,
+      "module": "torch.nn"
+    },
+    {
+      "file": "src\\preprocessing.py",
+      "line": 2,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\preprocessing.py",
+      "line": 3,
+      "module": "cv2"
+    },
+    {
+      "file": "src\\preprocessing.py",
+      "line": 4,
+      "module": "numpy"
+    },
+    {
+      "file": "src\\preprocessing.py",
+      "line": 5,
+      "module": "torch"
+    },
+    {
+      "file": "src\\runtime.py",
+      "line": 2,
+      "module": "os"
+    },
+    {
+      "file": "src\\runtime.py",
+      "line": 12,
+      "module": "cv2"
+    },
+    {
+      "file": "src\\runtime.py",
+      "line": 13,
+      "module": "torch"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 2,
+      "module": "csv"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 3,
+      "module": "time"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 4,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 5,
+      "module": "torch"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 6,
+      "module": "torch.nn"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 7,
+      "module": "torch.utils.data"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 8,
+      "module": "src.dataset"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 9,
+      "module": "src.inference"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 10,
+      "module": "src.losses"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 11,
+      "module": "src.metrics"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 12,
+      "module": "src.models"
+    },
+    {
+      "file": "src\\trainer.py",
+      "line": 13,
+      "module": "src.utils"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 2,
+      "module": "hashlib"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 3,
+      "module": "json"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 4,
+      "module": "os"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 5,
+      "module": "platform"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 6,
+      "module": "random"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 7,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 8,
+      "module": "numpy"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 9,
+      "module": "torch"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 45,
+      "module": "cv2"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 46,
+      "module": "matplotlib"
+    },
+    {
+      "file": "src\\utils.py",
+      "line": 51,
+      "module": "winreg"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 2,
+      "module": "csv"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 3,
+      "module": "pathlib"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 4,
+      "module": "matplotlib"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 6,
+      "module": "matplotlib.pyplot"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 7,
+      "module": "numpy"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 8,
+      "module": "torch"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 9,
+      "module": "src.dataset"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 10,
+      "module": "src.inference"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 11,
+      "module": "src.metrics"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 12,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "src\\visualization.py",
+      "line": 13,
+      "module": "src.utils"
+    },
+    {
+      "file": "tests\\helpers.py",
+      "line": 2,
+      "module": "contextlib"
+    },
+    {
+      "file": "tests\\helpers.py",
+      "line": 3,
+      "module": "pathlib"
+    },
+    {
+      "file": "tests\\helpers.py",
+      "line": 4,
+      "module": "shutil"
+    },
+    {
+      "file": "tests\\helpers.py",
+      "line": 5,
+      "module": "uuid"
+    },
+    {
+      "file": "tests\\test_compliance.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_compliance.py",
+      "line": 3,
+      "module": "ast"
+    },
+    {
+      "file": "tests\\test_compliance.py",
+      "line": 4,
+      "module": "pathlib"
+    },
+    {
+      "file": "tests\\test_compliance.py",
+      "line": 5,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_compliance.py",
+      "line": 6,
+      "module": "scripts.audit"
+    },
+    {
+      "file": "tests\\test_compliance.py",
+      "line": 7,
+      "module": "scripts.annotate"
+    },
+    {
+      "file": "tests\\test_metrics.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_metrics.py",
+      "line": 3,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_metrics.py",
+      "line": 4,
+      "module": "torch"
+    },
+    {
+      "file": "tests\\test_metrics.py",
+      "line": 5,
+      "module": "src.metrics"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 1,
+      "module": "src"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 3,
+      "module": "contextlib"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 4,
+      "module": "io"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 5,
+      "module": "json"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 6,
+      "module": "os"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 7,
+      "module": "pathlib"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 8,
+      "module": "subprocess"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 9,
+      "module": "sys"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 10,
+      "module": "tests"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 11,
+      "module": "unittest"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 12,
+      "module": "unittest.mock"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 13,
+      "module": "cv2"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 14,
+      "module": "numpy"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 15,
+      "module": "torch"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 16,
+      "module": "src.dataset"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 17,
+      "module": "src.inference"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 18,
+      "module": "src.losses"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 19,
+      "module": "src.models"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 20,
+      "module": "src.preprocessing"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 21,
+      "module": "src.trainer"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 22,
+      "module": "src.evaluation"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 23,
+      "module": "src.utils"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 24,
+      "module": "src.inference"
+    },
+    {
+      "file": "tests\\test_pipeline.py",
+      "line": 193,
+      "module": "predict"
+    },
+    {
+      "file": "train.py",
+      "line": 2,
+      "module": "src"
+    },
+    {
+      "file": "train.py",
+      "line": 4,
+      "module": "argparse"
+    },
+    {
+      "file": "train.py",
+      "line": 5,
+      "module": "src.trainer"
+    },
+    {
+      "file": "train.py",
+      "line": 6,
+      "module": "src.utils"
+    }
+  ],
+  "issues": [],
+  "scope": "AST imports and direct cv2 calls; supplemented by manual code review"
+}

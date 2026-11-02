@@ -1,0 +1,98 @@
+{
+  "authentic_phone_photos": true,
+  "manually_annotated": false,
+  "attestation_note": "authentic_phone_photos follows the author statement in source_manifest.json; phone model not recorded. manually_annotated is false: masks are EfficientSAM-Ti AI reference masks (mask_provenance.json).",
+  "conditions_note": "Condition tags were inferred from file names and visual review by the assistant; the author should confirm them. Allowed tags: indoor_outdoor, daylight_tubelight, near_far, clutter, occlusion.",
+  "phone_model": null,
+  "photos": [
+    {
+      "id": "bag_bat",
+      "object": "three bags and cricket bat",
+      "conditions": [
+        "clutter",
+        "indoor_outdoor"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "chair_study-table",
+      "object": "chair at a study table",
+      "conditions": [
+        "clutter",
+        "occlusion",
+        "indoor_outdoor"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "cycle_inside",
+      "object": "nearest bicycle in a shed",
+      "conditions": [
+        "clutter",
+        "occlusion",
+        "indoor_outdoor"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "cycle_outside",
+      "object": "foreground bicycle outdoors",
+      "conditions": [
+        "indoor_outdoor",
+        "near_far"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "desktop",
+      "object": "computer monitor and stand",
+      "conditions": [
+        "indoor_outdoor"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "desktop_table",
+      "object": "desk/table",
+      "conditions": [
+        "clutter",
+        "indoor_outdoor"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "dustbin",
+      "object": "dustbin with lid",
+      "conditions": [
+        "near_far"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "outside_plant",
+      "object": "foreground shrubs",
+      "conditions": [
+        "indoor_outdoor",
+        "near_far"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "shoes",
+      "object": "shoes on a mat",
+      "conditions": [
+        "near_far"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    },
+    {
+      "id": "study_table",
+      "object": "study table",
+      "conditions": [
+        "clutter",
+        "indoor_outdoor"
+      ],
+      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+    }
+  ]
+}

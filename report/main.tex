@@ -1,18 +1,50 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[margin=24mm]{geometry}
-\usepackage{amsmath,amssymb,booktabs,graphicx,float,tikz}
-\usepackage[hidelinks]{hyperref}
+\usepackage[top=26mm,bottom=26mm,left=24mm,right=24mm]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath,amssymb,booktabs,graphicx,float,tikz,array,colortbl}
+\usepackage{titlesec,fancyhdr,enumitem,url}
+\usepackage[font=small,labelfont={bf,color=accent},labelsep=period,justification=centering,skip=6pt]{caption}
+\usepackage[colorlinks=true,linkcolor=accent,urlcolor=accent,citecolor=accent]{hyperref}
 \usetikzlibrary{positioning,arrows.meta}
-\setlength{\parskip}{5pt}
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{band}{HTML}{EAF1F8}
+\setlength{\parskip}{6pt}
 \setlength{\parindent}{0pt}
 \setlength{\emergencystretch}{2em}
-\title{Assignment 2: Cost-Efficient Segmentation under a Compute Budget}
-\author{Jatin Purbia --- B23CH1022\\CSL7360 --- Computer Vision\\Indian Institute of Technology Jodhpur}
-\date{2 November 2026}
+\renewcommand{\arraystretch}{1.18}
+\setlist{itemsep=3pt,topsep=3pt}
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection}{0.6em}{}[\vspace{-2pt}{\color{accent!40}\titlerule}]
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\lhead{\small\color{gray}CSL7360 Assignment 2}
+\rhead{\small\color{gray}Jatin Purbia (B23CH1022)}
+\cfoot{\small\color{gray}\thepage}
+\fancypagestyle{plain}{\fancyhf{}\cfoot{\small\color{gray}\thepage}\renewcommand{\headrulewidth}{0pt}}
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\color{accent}\rule{\linewidth}{1.6pt}}\\[10pt]
+    {\LARGE\bfseries Cost-Efficient Segmentation\\[2pt] under a Compute Budget}\\[8pt]
+    {\large CSL7360 Computer Vision --- Assignment 2 (Track B)}\\[10pt]
+    {\bfseries Jatin Purbia} (B23CH1022)\\
+    Indian Institute of Technology Jodhpur\\[2pt]
+    {\small\color{gray}2 November 2026}\\[4pt]
+    {\color{accent}\rule{\linewidth}{0.6pt}}
+  \end{center}\vspace{4pt}}
+\renewcommand{\abstractname}{}
 \begin{document}
 \maketitle
+\begin{center}\small
+\begin{tabular}{@{}>{\columncolor{band}}c>{\columncolor{band}}c>{\columncolor{band}}c>{\columncolor{band}}c>{\columncolor{band}}c@{}}
+\textbf{Parameters} & \textbf{File size} & \textbf{CPU time (DUTS-TE)} & \textbf{DUTS-TE $Q$} & \textbf{DUTS-TE CES}\\
+439{,}393 & 1.79\,MB & 17.1\,ms (limit 50) & 0.633 & 0.563
+\end{tabular}
+\end{center}
 \begin{abstract}
+\noindent\textbf{\color{accent}Abstract.}\quad
 We solve Track B of the assignment with a small U-Net trained from scratch (439{,}393 parameters, 1.79\,MB, no pretrained weights) that labels every pixel of a $256\times256$ photo as object or background. The network is first trained with BCE and then fine-tuned for six epochs with BCE+Dice and mild augmentation; it runs internally at $128\times128$ with a channels-last tensor layout, which keeps the mean single-thread CPU time near 17\,ms against the 50\,ms budget. All choices were made on a held-out part of DUTS-TR. On the untouched DUTS-TE set the model reaches mIoU $0.714$, BF1 $0.444$, $Q=0.633$ and CES $=0.563$. On our ten own phone photographs, scored against the supplied masks, it reaches mIoU $0.623$, BF1 $0.324$, $Q=0.533$ and CES $=0.480$.
 \end{abstract}
 
@@ -125,7 +157,7 @@ Stage 1 & $r=96$ & 0.8503 & 0.5958 & 0.7739 & 22.4 & 0.6716\\
 Stage 1 & $r=128$, ch.-last & 0.8576 & 0.6245 & 0.7877 & 21.6 & 0.6862\\
 Fine-tuned & $r=96$ & 0.8538 & 0.6016 & 0.7782 & 14.4 & 0.7002\\
 Fine-tuned & $r=112$ & 0.8595 & 0.6205 & 0.7878 & 20.5 & 0.6896\\
-Fine-tuned & $r=128$ (selected) & 0.8591 & 0.6284 & 0.7899 & 24.3 & 0.6794\\
+\rowcolor{band}Fine-tuned & $r=128$ (selected) & 0.8591 & 0.6284 & 0.7899 & 24.3 & 0.6794\\
 Fine-tuned & $r=144$ & 0.8514 & 0.6191 & 0.7817 & 27.7 & 0.6619\\\bottomrule
 \end{tabular}
 \caption{Validation-only comparison (threshold 0.5, channels-last except the first row). Timings are from one noisy session.}\label{tab:res}
@@ -185,7 +217,7 @@ A 439k-parameter U-Net trained from scratch and fine-tuned with BCE+Dice gives $
 \clearpage
 \section{Reproducibility}
 Run these PowerShell commands in an outputs-empty copy containing source, configurations and genuine input data. Existing submitted weights/results should be preserved in a separate copy. Backticks continue a command on the next line. The complete selected configuration is \path{configs/final.json}; the training command below reproduces it without touching either test set (the training configuration is \path{configs/final_train.json}). Original comparison/sweep commands are documented in the root README and \path{docs/REPRODUCIBILITY.md}.
-{\small
+{\footnotesize
 \begin{verbatim}
 python -m pip install -r requirements.txt
 python -m scripts.verify

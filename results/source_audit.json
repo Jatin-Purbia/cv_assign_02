@@ -501,29 +501,54 @@
       "module": "src.utils"
     },
     {
-      "file": "scripts\\review_failures.py",
+      "file": "scripts\\report_plots.py",
       "line": 2,
       "module": "src"
     },
     {
-      "file": "scripts\\review_failures.py",
+      "file": "scripts\\report_plots.py",
       "line": 4,
       "module": "argparse"
     },
     {
-      "file": "scripts\\review_failures.py",
+      "file": "scripts\\report_plots.py",
       "line": 5,
+      "module": "csv"
+    },
+    {
+      "file": "scripts\\report_plots.py",
+      "line": 6,
+      "module": "json"
+    },
+    {
+      "file": "scripts\\report_plots.py",
+      "line": 7,
+      "module": "re"
+    },
+    {
+      "file": "scripts\\report_plots.py",
+      "line": 8,
       "module": "pathlib"
     },
     {
-      "file": "scripts\\review_failures.py",
-      "line": 6,
-      "module": "src.utils"
+      "file": "scripts\\report_plots.py",
+      "line": 9,
+      "module": "matplotlib"
     },
     {
-      "file": "scripts\\review_failures.py",
-      "line": 7,
-      "module": "src.visualization"
+      "file": "scripts\\report_plots.py",
+      "line": 11,
+      "module": "matplotlib.pyplot"
+    },
+    {
+      "file": "scripts\\report_plots.py",
+      "line": 12,
+      "module": "numpy"
+    },
+    {
+      "file": "scripts\\report_plots.py",
+      "line": 13,
+      "module": "src.utils"
     },
     {
       "file": "scripts\\run_experiments.py",
@@ -563,86 +588,6 @@
     {
       "file": "scripts\\run_experiments.py",
       "line": 10,
-      "module": "src.utils"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 2,
-      "module": "src"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 4,
-      "module": "argparse"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 5,
-      "module": "csv"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 6,
-      "module": "pathlib"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 7,
-      "module": "src.inference"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 8,
-      "module": "src.evaluation"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 9,
-      "module": "src.utils"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 10,
-      "module": "src.utils"
-    },
-    {
-      "file": "scripts\\sweep_inference.py",
-      "line": 11,
-      "module": "torch"
-    },
-    {
-      "file": "scripts\\sweep_threshold.py",
-      "line": 2,
-      "module": "src"
-    },
-    {
-      "file": "scripts\\sweep_threshold.py",
-      "line": 4,
-      "module": "argparse"
-    },
-    {
-      "file": "scripts\\sweep_threshold.py",
-      "line": 5,
-      "module": "csv"
-    },
-    {
-      "file": "scripts\\sweep_threshold.py",
-      "line": 6,
-      "module": "pathlib"
-    },
-    {
-      "file": "scripts\\sweep_threshold.py",
-      "line": 7,
-      "module": "src.inference"
-    },
-    {
-      "file": "scripts\\sweep_threshold.py",
-      "line": 8,
-      "module": "src.evaluation"
-    },
-    {
-      "file": "scripts\\sweep_threshold.py",
-      "line": 9,
       "module": "src.utils"
     },
     {

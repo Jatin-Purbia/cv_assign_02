@@ -132,6 +132,10 @@ Q\left[1-0.20\frac{T_{CPU}}{50}-0.10\min\left(1,\frac{S_{disk}}{4194304}\right)\
 \end{align}
 $T_{CPU}$ is in milliseconds and $S_{disk}$ is the actual parameter-file size in bytes. For $Q=.7$, $T=20$ and $S=524288$, the exact result is $.63525$, consistent with the PDF's rounded $.635$.
 
+\begin{figure}[htbp]\centering\includegraphics[width=0.62\linewidth]{figures/fig_ces_curves.png}
+\caption{CES as a function of CPU time for four quality levels. The penalty grows linearly with time, so halving the CPU time raises CES by only a few percent, whereas a gain of $0.1$ in $Q$ raises it by about $0.09$. The three orange points are our three evaluation sets.}\label{fig:ces}
+\end{figure}
+
 \section{Training methodology}
 \textbf{Stage 1 (scratch).} The network was trained once for 16 epochs with AdamW (learning rate $3\times10^{-3}$, weight decay $10^{-4}$), cosine learning-rate decay, batch size 16, gradient-norm clipping at 5 and pure BCE loss ($\beta=0$), using the 9{,}498 training images at $128\times128$ internal resolution; the loss is computed on logits upsampled to $256\times256$. The best epoch by validation $Q$ (epoch 15, $Q=0.7877$ at $r=128$) was kept. Training took about 10 minutes per epoch on the CPU listed below using 10 threads; the timed pipeline always uses one. Validation $Q$ rose steadily from 0.51 (epoch 1) to 0.79 (epoch 16), see Figure~\ref{fig:train}.
 
@@ -163,6 +167,23 @@ Fine-tuned & $r=144$ & 0.8514 & 0.6191 & 0.7817 & 27.7 & 0.6619\\\bottomrule
 \caption{Validation-only comparison (threshold 0.5, channels-last except the first row). Timings are from one noisy session.}\label{tab:res}
 \end{table}
 
+\begin{figure}[htbp]\centering\includegraphics[width=0.86\linewidth]{figures/fig_tradeoff.png}
+\caption{Validation $Q$ against mean CPU time for every candidate. Each line connects one model family evaluated at different inference resolutions. Grey curves are lines of constant CES. The U-Net families sit far above the tiny networks, and the fine-tuned model (orange) is above its stage-1 predecessor at almost every speed.}\label{fig:tradeoff}
+\end{figure}
+Figure~\ref{fig:tradeoff} shows why the final run moved to a larger network. The tiny and depthwise networks (3--4k parameters) stay at $Q\approx0.46$ whatever the resolution, because they lack the capacity to separate objects from clutter; spending more time on them buys nothing. The 439k-parameter U-Net reaches $Q\approx0.79$ at about 20\,ms, which lies well above the CES\,$=0.60$ contour, so extra compute is clearly worthwhile there. Figure~\ref{fig:res} breaks the resolution effect down: quality peaks near the training resolution ($r=112$--$128$) and declines beyond it, while time grows roughly with $r^2$; the fine-tuned model is better than stage 1 at every resolution.
+
+\begin{figure}[htbp]\centering\includegraphics[width=0.98\linewidth]{figures/fig_resolution.png}
+\caption{Validation $Q$, CPU time and CES against internal resolution for the stage-1 and fine-tuned U-Net. Timings come from one noisy session.}\label{fig:res}
+\end{figure}
+The decision threshold has little influence (Figure~\ref{fig:thr}). On the stage-1 model, $\tau$ between $0.40$ and $0.55$ changes $Q$ by under $0.005$ and $\tau=0.6$ is worse; for the fine-tuned model $0.5$ is equal or better than $0.45$ at three of the four resolutions. We therefore keep the default $\tau=0.5$ rather than tune it. Finally, Figure~\ref{fig:stress} checks robustness on 128 validation photographs with synthetic darkening, brightening and contrast reduction: the fine-tuned model is better by $0.018$--$0.024$ in $Q$ in all three conditions, consistent with the colour augmentation used in stage 2.
+
+\begin{figure}[htbp]\centering\includegraphics[width=0.98\linewidth]{figures/fig_threshold.png}
+\caption{Left: stage-1 validation scores against the decision threshold. Right: fine-tuned validation $Q$ at thresholds $0.45$ and $0.5$ for four resolutions.}\label{fig:thr}
+\end{figure}
+\begin{figure}[htbp]\centering\includegraphics[width=0.6\linewidth]{figures/fig_stress.png}
+\caption{Validation-subset $Q$ under synthetic lighting changes for the stage-1 and fine-tuned models.}\label{fig:stress}
+\end{figure}
+
 \section{Results}
 \begin{table}[htbp]\centering\small
 \resizebox{\linewidth}{!}{\input{results_table.tex}}
@@ -170,10 +191,28 @@ Fine-tuned & $r=144$ & 0.8514 & 0.6191 & 0.7817 & 27.7 & 0.6619\\\bottomrule
 \end{table}
 The test CPU time is 17.1\,ms, well inside the 50\,ms limit, and the file is 1{,}787{,}043 bytes (0.43\,\% of 4\,MiB), so the penalty terms cost about $11\%$ of $Q$. Compared with the stage-1 model (DUTS-TE: mIoU $0.705$, BF1 $0.394$, $Q=0.612$, CES $0.544$, 16.9\,ms) fine-tuning raises $Q$ by $0.022$ and BF1 by $0.050$ at nearly unchanged time. The gap between validation ($Q=0.790$) and DUTS-TE ($Q=0.633$) is large. Validation images come from the training distribution, whereas DUTS-TE contains many photographs with several objects, small objects and clutter, and the boundary score drops most (BF1 $0.63\to0.44$): a 439k-parameter network cannot localize fine contours. CPU: \input{environment.tex}
 
+\begin{figure}[htbp]\centering\includegraphics[width=0.98\linewidth]{figures/fig_distributions.png}
+\caption{Per-image mIoU, BF1 and $Q$ of the selected model on the 5,019 DUTS-TE photographs; the orange line marks the mean.}\label{fig:dist}
+\end{figure}
+The distributions in Figure~\ref{fig:dist} show that the average hides a wide spread: per-image $Q$ has a median of $0.64$, a 10th percentile of $0.40$ and a 90th percentile of $0.84$; $16\%$ of the photos reach $Q\ge0.8$ while $10\%$ fall below $0.4$. The BF1 histogram has a spike at zero ($1.4\%$ of the images have no matched boundary pixels at all), typically photos where the network misses the object or splits it into fragments far from the true outline. Overlap and boundary quality are strongly related (Figure~\ref{fig:hex}, correlation $0.85$), but boundary accuracy is systematically lower: a $\pm2$ pixel tolerance at $256\times256$ is strict for the soft edges produced by a model that works at $128\times128$.
+
+\begin{figure}[htbp]\centering\includegraphics[width=0.6\linewidth]{figures/fig_hexbin.png}
+\caption{Per-image mIoU against BF1 on DUTS-TE (darker cells contain more images).}\label{fig:hex}
+\end{figure}
+\begin{figure}[htbp]\centering\includegraphics[width=0.98\linewidth]{figures/fig_confusion.png}
+\caption{Row-normalised pixel confusion matrices of the selected model. Object recall falls from $89.8\%$ on validation to $76.0\%$ on DUTS-TE and $68.4\%$ on our photographs, while background errors stay between $4.5\%$ and $12.7\%$.}\label{fig:conf}
+\end{figure}
+Figure~\ref{fig:conf} shows where the lost quality goes. On every set the main error is a \emph{missed object} (false negatives) rather than hallucinated foreground: object recall drops sharply from validation to the harder test photographs, whereas the background is classified correctly $87$--$96\%$ of the time. This matches the failure cases below, where the network latches on to one salient part and leaves other object regions unlabelled.
+
 \section{Captured-photo results}\label{sec:cap}
 Ten phone photographs (indoor and outdoor, near and far, cluttered scenes, a plant in a garden, bicycles in a shed) are stored in \texttt{captured/original} and resized to $256\times256$ in \texttt{captured/images\_256}. The binary masks in \texttt{captured/masks\_256} are used as ground truth. \textbf{Note:} these masks were produced with a pretrained promptable segmenter (EfficientSAM-Ti) and prompts chosen by an assistant, not drawn manually; they are used here only for evaluation, never for training or selection, and the numbers below inherit any errors in those masks. They are computed with the same metric code as the other sets, aggregating pixels over the ten photos.
 
 The fine-tuned model reaches mIoU $0.623$, BF1 $0.324$, $Q=0.533$ and CES $0.480$ at 14.1\,ms (Table~\ref{tab:main}). The stage-1 model scores mIoU $0.585$, BF1 $0.219$, $Q=0.475$, so fine-tuning helps here as well, but ten photos are far too few for a precise estimate. Table~\ref{tab:cap} gives per-photo values, and Figures~\ref{fig:ov1} and~\ref{fig:ov2} show the photograph, ground truth, prediction and the two overlays for every photo.
+
+\begin{figure}[htbp]\centering\includegraphics[width=0.98\linewidth]{figures/fig_captured.png}
+\caption{Left: per-photo $Q$ for the stage-1 and fine-tuned model, sorted by the fine-tuned score. Right: per-photo mIoU against BF1 for the fine-tuned model.}\label{fig:cap}
+\end{figure}
+Figure~\ref{fig:cap} shows that fine-tuning improves eight of the ten photos (the largest gains are on \texttt{bag\_bat} and \texttt{dustbin}, which contain isolated, high-contrast objects) but is slightly worse on \texttt{desktop} and \texttt{desktop\_table}, where the reference mask covers a large piece of furniture rather than a compact salient item. The right panel again shows the tight relation between overlap and boundary quality, with the cluttered scenes in the lower left.
 
 \begin{table}[htbp]\centering\small
 \begin{tabular}{lrrr}\toprule

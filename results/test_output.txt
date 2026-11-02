@@ -56,6 +56,6 @@ test_initialization_has_exact_provenance (tests.test_training_reliability.Traini
 test_resume_matches_uninterrupted_training_and_repairs_history (tests.test_training_reliability.TrainingReliabilityTests.test_resume_matches_uninterrupted_training_and_repairs_history) ... ok
 
 ----------------------------------------------------------------------
-Ran 56 tests in 10.815s
+Ran 56 tests in 13.135s
 
 OK

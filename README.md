@@ -114,6 +114,7 @@ See [captured/README.md](captured/README.md) and
 ## Repository layout
 
 - `src/`, `scripts/`, `tests/`: training, inference, metrics, evaluation and checks.
+  `python -m scripts.report_plots` redraws the report figures in `report/figures/` from saved results.
 - `configs/`, `data/splits/`: reproducible settings and fixed manifests.
 - `weights/`: baseline and the single active release with freeze/qualification evidence.
 - `experiments/`, `results/`: best checkpoints, histories and measured evidence.

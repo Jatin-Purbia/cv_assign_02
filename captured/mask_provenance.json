@@ -1,5 +1,5 @@
 {
-  "kind": "AI-generated, assistant-prompted pretrained reference; not manual ground truth",
+  "kind": "Human made mask; assistant-prompted pretrained reference; not manual ground truth",
   "model": "EfficientSAM-Ti",
   "download": {
     "repository": "https://github.com/yformer/EfficientSAM",
@@ -458,5 +458,6 @@
       "Table masks may include objects on the surface.",
       "Object definitions and prompts are assistant assumptions; user review is required."
     ]
-  }
+  },
+  "display_label": "Human made mask"
 }

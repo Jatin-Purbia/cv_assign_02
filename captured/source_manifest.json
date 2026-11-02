@@ -14,7 +14,8 @@
       "reference_mask": "captured/masks_256/bag_bat.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "2693fbc19d81fd02f7dbbbefbff26860e7d575056323ad535aceb057b0b47843",
-      "original_source": "inference/bag_bat.jpeg"
+      "original_source": "inference/bag_bat.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "chair_study-table",
@@ -27,7 +28,8 @@
       "reference_mask": "captured/masks_256/chair_study-table.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "4922b9ba585b2f3c906c67b45ec8eb5f3793d0e8ae6ee083c07a2e0162edd55f",
-      "original_source": "inference/chair_study-table.jpeg"
+      "original_source": "inference/chair_study-table.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "cycle_inside",
@@ -40,7 +42,8 @@
       "reference_mask": "captured/masks_256/cycle_inside.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "490271d7b2d98c600cf2dff492a2c482101e490d413d071644344e900808c06d",
-      "original_source": "inference/cycle_inside.jpeg"
+      "original_source": "inference/cycle_inside.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "cycle_outside",
@@ -53,7 +56,8 @@
       "reference_mask": "captured/masks_256/cycle_outside.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "e875939c1750aa9d1594ebad1494bab6beb13c40ee9643ba436113757e88bcb5",
-      "original_source": "inference/cycle_outside.jpeg"
+      "original_source": "inference/cycle_outside.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "desktop",
@@ -66,7 +70,8 @@
       "reference_mask": "captured/masks_256/desktop.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "cf181938b66079d24b746b59f6692e259b2b70eda8250a8b34ff9793041c180c",
-      "original_source": "inference/desktop.jpeg"
+      "original_source": "inference/desktop.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "desktop_table",
@@ -79,7 +84,8 @@
       "reference_mask": "captured/masks_256/desktop_table.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "1c13973c058cf8c9a3bd420ddb90c0f491b1b62ccbd7df927e0688daccda5505",
-      "original_source": "inference/desktop_table.jpeg"
+      "original_source": "inference/desktop_table.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "dustbin",
@@ -92,7 +98,8 @@
       "reference_mask": "captured/masks_256/dustbin.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "b9034381d508e499b56c69de0cabe17a68e5cbb1c07a04ba0a3d0e878c92b17a",
-      "original_source": "inference/dustbin.jpeg"
+      "original_source": "inference/dustbin.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "outside_plant",
@@ -105,7 +112,8 @@
       "reference_mask": "captured/masks_256/outside_plant.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "99615573eb05643ae6cb8c5d943a0d6c81f8a264608a015bdcfc7d236c0a05b8",
-      "original_source": "inference/outside_plant.jpeg"
+      "original_source": "inference/outside_plant.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "shoes",
@@ -118,7 +126,8 @@
       "reference_mask": "captured/masks_256/shoes.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "a6fcd2e9f7bb048bd4a01e52696583ca9a51f817eff2fcce83b6ef524f9fff3c",
-      "original_source": "inference/shoes.jpeg"
+      "original_source": "inference/shoes.jpeg",
+      "mask_label": "Human made mask"
     },
     {
       "id": "study_table",
@@ -131,8 +140,10 @@
       "reference_mask": "captured/masks_256/study_table.png",
       "reference_mask_present": true,
       "reference_mask_sha256": "1c6c0b4aa1fe04ecf47b595b29f2bdd9f8188a7035dd13a6215260522508b640",
-      "original_source": "inference/study_table.jpeg"
+      "original_source": "inference/study_table.jpeg",
+      "mask_label": "Human made mask"
     }
   ],
-  "original_source_folder": "inference"
+  "original_source_folder": "inference",
+  "mask_label": "Human made mask"
 }

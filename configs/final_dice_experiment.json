@@ -1,5 +1,0 @@
-{
-  "trials": [
-    {"name": "unet16_dice_128", "overrides": {"dice_weight": 0.5}}
-  ]
-}

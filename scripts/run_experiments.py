@@ -12,8 +12,8 @@ from src.utils import read_json, write_json
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--config', default='configs/baseline.json')
-    p.add_argument('--experiments', default='configs/experiments.json')
+    p.add_argument('--config', default='configs/final_train.json')
+    p.add_argument('--experiments', default='configs/reproduce_experiments.json')
     p.add_argument('--out', default='experiments/candidates')
     p.add_argument('--append', action='store_true', help='Preserve previous measured comparison rows')
     args = p.parse_args()

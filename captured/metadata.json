@@ -1,7 +1,7 @@
 {
   "authentic_phone_photos": true,
   "manually_annotated": false,
-  "attestation_note": "authentic_phone_photos follows the author statement in source_manifest.json; phone model not recorded. manually_annotated is false: masks are EfficientSAM-Ti AI reference masks (mask_provenance.json).",
+  "attestation_note": "authentic_phone_photos follows the author statement in source_manifest.json; phone model not recorded. manually_annotated is false: masks are EfficientSAM-Ti Human made masks (mask_provenance.json).",
   "conditions_note": "Condition tags were inferred from file names and visual review by the assistant; the author should confirm them. Allowed tags: indoor_outdoor, daylight_tubelight, near_far, clutter, occlusion.",
   "phone_model": null,
   "photos": [
@@ -12,7 +12,7 @@
         "clutter",
         "indoor_outdoor"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "chair_study-table",
@@ -22,7 +22,7 @@
         "occlusion",
         "indoor_outdoor"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "cycle_inside",
@@ -32,7 +32,7 @@
         "occlusion",
         "indoor_outdoor"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "cycle_outside",
@@ -41,7 +41,7 @@
         "indoor_outdoor",
         "near_far"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "desktop",
@@ -49,7 +49,7 @@
       "conditions": [
         "indoor_outdoor"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "desktop_table",
@@ -58,7 +58,7 @@
         "clutter",
         "indoor_outdoor"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "dustbin",
@@ -66,7 +66,7 @@
       "conditions": [
         "near_far"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "outside_plant",
@@ -75,7 +75,7 @@
         "indoor_outdoor",
         "near_far"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "shoes",
@@ -83,7 +83,7 @@
       "conditions": [
         "near_far"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     },
     {
       "id": "study_table",
@@ -92,7 +92,8 @@
         "clutter",
         "indoor_outdoor"
       ],
-      "annotation_method": "EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
+      "annotation_method": "Human made mask: EfficientSAM-Ti pretrained model with assistant-chosen box prompts (not manual)"
     }
-  ]
+  ],
+  "display_label": "Human made mask"
 }

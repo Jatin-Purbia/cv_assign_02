@@ -1,5 +1,0 @@
-{
-  "trials": [
-    {"name": "unet16_bce_128", "overrides": {}}
-  ]
-}

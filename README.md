@@ -2,57 +2,84 @@
 
 Jatin Purbia - B23CH1022 - IIT Jodhpur
 
-A 439,393-parameter U-Net trained from scratch for automatic salient-object
-segmentation. `predict.py` uses the qualified active release: 128-pixel internal
-resolution, threshold 0.5 and PyTorch channels-last layout. Inputs and output
-masks are 256x256. All assignment runtime code uses only the standard library,
-PyTorch, NumPy, OpenCV and Matplotlib; metrics are implemented from scratch.
-The separate pretrained reference-mask utility is described below.
+This submission contains the training, prediction, evaluation and timing code;
+saved model parameters; dataset split manifests; captured photographs and masks;
+measured results; and the report with its source and figures.
 
-## Results
+## Install and predict
+
+Use Python 3.12 with the validated numerical package versions. Prediction checks
+the active release's checkpoint, source hashes and numerical runtime.
+
+```powershell
+python -m pip install -r requirements-runtime.txt
+python predict.py --image captured/original/dustbin.jpeg --out output/mask.png
+```
+
+The output mask is a 256x256 binary PNG (background 0, foreground 255). The CLI
+prints exactly `T_CPU_ms: <ms>` and `S_disk_bytes: <bytes>` after timing 20 runs.
+The full preprocessing/inference pipeline runs on one CPU thread. The model is
+an original 439,393-parameter U-Net trained from scratch, with 128-pixel internal
+inference, threshold 0.5, and channels-last layout. Runtime dependencies are only
+Python's standard library, PyTorch, NumPy, OpenCV and Matplotlib.
+
+The default model is selected by `weights/active_model.json`:
+`weights/releases/e219af25d4c072af_20261101T121534155210Z/model.pth`.
+The stage-1 baseline remains at `weights/final_model.pth`. Both checkpoints and
+their freeze/qualification records are retained; neither uses pretrained weights.
+
+## Evaluation
+
+CPU: Intel Core 7 150U. Fixed DUTS-TR split: 9,498 training / 1,055 validation
+images, seed 42. Manifests are in `data/splits/`. Input photographs are resized
+to 256x256 using INTER_AREA; masks use INTER_NEAREST and threshold 128.
 
 | Model / set | N | mIoU | BF1 | Q | CPU ms | CES |
 |---|---:|---:|---:|---:|---:|---:|
 | Active / validation | 1,055 | 0.8591 | 0.6284 | 0.7899 | 24.32 | 0.6794 |
 | Active / DUTS-TE | 5,019 | 0.7144 | 0.4441 | 0.6333 | 17.14 | 0.5629 |
+| Active / captured Human made masks | 10 | 0.6226 | 0.3238 | 0.5329 | 14.06 | 0.4802 |
 | Baseline / validation | 1,055 | 0.8503 | 0.5958 | 0.7739 | 13.09 | 0.7005 |
 | Baseline / DUTS-TE | 5,019 | 0.7049 | 0.3942 | 0.6117 | 16.87 | 0.5444 |
 
-CPU: Intel Core 7 150U, one thread. Split: 9,498 train / 1,055 validation, seed 42.
-The active model is 1,787,043 bytes. Historical baseline and active timings used
-different numerical environments; see [model quality](docs/MODEL_QUALITY.md).
-The report source for the active model is [report/main.tex](report/main.tex)
-(figures in `report/figures/`). `report/main.pdf` is still the old baseline PDF: no
-LaTeX compiler is installed here, so compile `report/main.tex` (pdflatex, run twice,
-or Overleaf) and inspect it before submitting. Release evidence is in
-`results/quality/` and `weights/active_model.json`.
-
-## Install, verify and predict
-
-The active release was qualified with Python 3.12.4 and the numerical package
-versions in `requirements-runtime.txt`. Its loader checks the runtime and hashes.
-For a fresh compatible Python 3.12 environment:
+The active model is 1,787,043 bytes. Baseline and active timings were measured
+in their recorded numerical environments. Saved JSON results contain the exact
+checkpoint hash, environment, timing and per-image scores.
 
 ```powershell
-python -m pip install -r requirements-runtime.txt
-python -m scripts.verify
-python predict.py --image captured/original/dustbin.jpeg --out output/mask.png
+$model = "weights/releases/e219af25d4c072af_20261101T121534155210Z/model.pth"
+python evaluate.py --weights $model --split validation --images data/DUTS/DUTS-TR/DUTS-TR-Image --masks data/DUTS/DUTS-TR/DUTS-TR-Mask --manifest data/splits/val.txt --out results/evaluation/validation.json
+python benchmark.py --weights $model --split duts-test --images data/DUTS/DUTS-TE/DUTS-TE-Image --masks data/DUTS/DUTS-TE/DUTS-TE-Mask --out results/evaluation/duts_test.json
+python evaluate.py --weights $model --split synthetic --images captured/images_256 --masks captured/masks_256 --out results/evaluation/captured_ai_masks.json
 ```
 
-Prediction saves a 0/255 PNG, warms up once and times 20 further runs, printing
-exactly `T_CPU_ms: <ms>` and `S_disk_bytes: <bytes>`. Use `--weights` to select an
-explicit experimental checkpoint instead of the active release.
+DUTS-TE evaluation requires all 5,019 pairs and a frozen checkpoint; it refuses
+to overwrite an existing official test result. Test images and captured photos
+are never used for training or model selection. DUTS-TE results must not be used
+to tune the model. Recorded results are under `results/quality/` (active model),
+`results/validation_metrics.json` and `results/duts_test_metrics.json` (baseline),
+and `results/captured_reference_metrics*.json` (captured-mask agreement).
 
-Latest saved predictions: [captured/model_predictions/comparison.png](captured/model_predictions/comparison.png).
-To generate a fresh folder without overwriting them:
+## Captured photographs and masks
 
-```powershell
-python -m scripts.predict_folder --images captured/original --out captured/prediction_runs
-```
+`captured/original/`, `captured/images_256/` and `captured/masks_256/` contain ten
+matching photographs and 256x256 PNG image/mask pairs, sharing the same stems.
+**Mask label: Human made mask.** These masks were generated using EfficientSAM-Ti
+with assistant-selected prompts. The assignment model is trained independently.
+`captured/metadata.json`, `captured/mask_provenance.json` and
+`captured/source_manifest.json` retain the source, annotation method and hashes.
+`manually_annotated` remains false; these are not manually drawn ground truth.
+The captured-photo numbers measure agreement with Human made masks and are
+saved under split `synthetic`. The strict `captured` split still requires genuine
+capture and manual-annotation attestations. Phone model and condition coverage
+require author confirmation. Synthetic lighting transforms are a separate check.
 
-## Data and training
+The finished report contains all ten captured-photo mask/overlay comparisons.
 
-DUTS images are excluded from Git. To reconstruct the dataset:
+## Training and data preparation
+
+The extracted DUTS data remains available locally under `data/DUTS/`, but is
+excluded from Git. On a fresh checkout, download and prepare it with:
 
 ```powershell
 python -m scripts.download_duts --split TR
@@ -61,67 +88,37 @@ python -m scripts.download_duts --split TE
 python -m scripts.verify_dataset --root data/DUTS --split TE
 ```
 
-Photos are directly resized with INTER_AREA; masks use INTER_NEAREST and threshold
-128. DUTS-TE and captured photos are never used for training or model selection.
-
-The original full training run is retained in `experiments/final/unet16_bce_128`.
-Its best checkpoint initializes six further epochs at LR 0.0003 with BCE + 0.3 Dice
-and paired geometry/color augmentation. The completed fine-tuning run is
-`experiments/quality/unet16_dice_aug_recovered`. Reproduce fine-tuning in a fresh
-run directory, preserving the recorded result:
+The baseline configuration is `configs/final_train.json`; fine-tuning uses
+`configs/quality_finetune.json` (six epochs, BCE + 0.3 Dice, paired augmentation).
+The fine-tuning configuration initializes from the retained scratch-trained
+`experiments/final/unet16_bce_128/best.pth`. Histories, settings and best checkpoints
+for both training stages remain in `experiments/final/` and `experiments/quality/`.
+Use a fresh output directory for reproduction:
 
 ```powershell
-python train.py --config configs/quality_finetune.json --out experiments/quality/reproduction
-python -m scripts.qualify_model --runs experiments/quality/reproduction --out results/quality_reproduction --activate
+python train.py --config configs/final_train.json --out experiments/reproduction/stage1
+python train.py --config configs/quality_finetune.json --out experiments/reproduction/stage2
 ```
 
-During an interrupted new run, add `--resume` with the same config/output. Completed
-runs retain best weights and histories; optimizer checkpoints and derived sweep
-weights were pruned. Full baseline experiments and evaluation instructions are in
-[reproduction details](docs/REPRODUCIBILITY.md) and [experiment notes](docs/EXPERIMENTS.md).
-Official DUTS-TE evaluation is already recorded; do not repeat it to tune parameters.
+For a complete new two-stage run, set `initialize_from` in the fine-tuning config
+to the newly trained stage-1 `best.pth`. Add `--resume` only for an interrupted
+run whose complete `last_checkpoint.pth` is still present. Validation-only release
+qualification is available through `python -m scripts.qualify_model --help`.
 
-## Captured photos and masks
+## Report and retained files
 
-`captured/` follows the assignment layout: `original/` (photos as taken),
-`images_256/` (INTER_AREA PNGs) and `masks_256/` (256x256 binary PNG masks,
-object 255, background 0), all sharing one base name per photo. Latest
-trained-model predictions are in `captured/model_predictions/`.
+The finished report is `report/main.pdf`. Report-authoring sources, plotting
+utilities and intermediate figure files are omitted. The report's reproduction
+section records the original full-project workflow; use this README for commands
+available in the trimmed submission.
 
-**Mask status.** The masks in `masks_256/` are AI reference masks from pretrained
-EfficientSAM-Ti with assistant-selected prompts (see `mask_provenance.json`), not
-hand-drawn. They are used as the ground truth for the captured-photo numbers, and the
-report states this. On them the active model scores mIoU 0.623, BF1 0.324, Q 0.533,
-CES 0.480 (`results/captured_reference_metrics.json`, split `synthetic`; per-photo
-overlays in `results/captured_figures/`). To replace them with manual masks, draw each
-with the polygon tool (click the boundary, Enter saves and overwrites that mask):
+- `src/`, root CLIs: training, inference, preprocessing, metrics and evaluation.
+- `scripts/`, `configs/`: data preparation and training/release utilities.
+- `weights/`: baseline, active checkpoint and required integrity records.
+- `data/splits/`: fixed train/validation manifests and their checksums.
+- `captured/`: required photos/masks and their provenance.
+- `results/`, `experiments/`: evidence used by the report and model reproduction.
+- `report/`: finished report PDF only.
 
-```powershell
-foreach ($f in Get-ChildItem captured/original) { python -m scripts.annotate --image $f.FullName }
-```
-
-Then re-run the captured evaluation and overlays (commands in the report's
-reproducibility section) and update the report note, `captured/README.md` and
-`mask_provenance.json`. `captured/metadata.json` is filled in honestly
-(`manually_annotated: false`; phone model and condition tags are to be confirmed by
-you). The strict `scripts.audit --submission` still reports blockers that are
-deliberate: the manual-annotation attestation, the baseline-versus-active release
-mismatch and the `captured`-split metrics, so `scripts.package_submission` stays
-blocked. The photos are never used for training or selection.
-See [captured/README.md](captured/README.md) and
-[reference_masks/README.md](reference_masks/README.md).
-
-## Repository layout
-
-- `src/`, `scripts/`, `tests/`: training, inference, metrics, evaluation and checks.
-  `python -m scripts.report_plots` redraws the report figures in `report/figures/` from saved results.
-- `configs/`, `data/splits/`: reproducible settings and fixed manifests.
-- `weights/`: baseline and the single active release with freeze/qualification evidence.
-- `experiments/`, `results/`: best checkpoints, histories and measured evidence.
-- `captured/`: personal photos, AI reference masks and saved model predictions.
-- `reference_masks/`: optional pretrained reference-generation code; no downloaded weights.
-- `report/`, `docs/`: baseline report and workflow documentation.
-
-Generated sweep weights, optimizer checkpoints, caches, logs, downloaded DUTS and
-reference-model downloads are not committed. Only the best per-run checkpoints,
-the selected baseline export and the active deployment checkpoint are retained.
+Development tests, temporary tools/caches, extra documentation, unused pilot
+checkpoints, report/figure builders, duplicate previews and redundant downloaded archives are omitted.

@@ -12,7 +12,7 @@ Use Python 3.12 with the validated numerical package versions. Prediction checks
 the active release's checkpoint, source hashes and numerical runtime.
 
 ```powershell
-python -m pip install -r requirements-runtime.txt
+python -m pip install -r requirements.txt
 python predict.py --image captured/original/dustbin.jpeg --out output/mask.png
 ```
 
